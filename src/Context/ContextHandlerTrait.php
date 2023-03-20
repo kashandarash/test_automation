@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\rules\Context;
+namespace Drupal\social_automation\Context;
 
 use Drupal\Component\Plugin\Exception\ContextException;
 use Drupal\Core\Plugin\ContextAwarePluginInterface as CoreContextAwarePluginInterface;
-use Drupal\rules\Exception\EvaluationException;
-use Drupal\rules\Exception\IntegrityException;
+use Drupal\social_automation\Exception\EvaluationException;
+use Drupal\social_automation\Exception\IntegrityException;
 
 /**
  * Provides methods for handling context based on the plugin configuration.
@@ -13,14 +13,14 @@ use Drupal\rules\Exception\IntegrityException;
  * The trait requires the plugin to use configuration as defined by the
  * ContextConfig class.
  *
- * @see \Drupal\rules\Context\ContextConfig
+ * @see \Drupal\social_automation\Context\ContextConfig
  */
 trait ContextHandlerTrait {
 
   /**
    * The data processor plugin manager used to process context variables.
    *
-   * @var \Drupal\rules\Context\DataProcessorManager
+   * @var \Drupal\social_automation\Context\DataProcessorManager
    */
   protected $processorManager;
 
@@ -36,10 +36,10 @@ trait ContextHandlerTrait {
    *
    * @param \Drupal\Core\Plugin\ContextAwarePluginInterface $plugin
    *   The plugin that is populated with context values.
-   * @param \Drupal\rules\Context\ExecutionStateInterface $state
+   * @param \Drupal\social_automation\Context\ExecutionStateInterface $state
    *   The execution state containing available variables.
    *
-   * @throws \Drupal\rules\Exception\EvaluationException
+   * @throws \Drupal\social_automation\Exception\EvaluationException
    *   Thrown if some context is not satisfied; e.g. a required context is
    *   missing.
    *
@@ -73,7 +73,7 @@ trait ContextHandlerTrait {
         $plugin->refineContextDefinitions($selected_data);
       }
       catch (ContextException $e) {
-        if (strpos($e->getMessage(), 'context is required') === FALSE) {
+        if (!str_contains($e->getMessage(), 'context is required')) {
           throw new EvaluationException($e->getMessage());
         }
       }
@@ -109,7 +109,7 @@ trait ContextHandlerTrait {
    *
    * @param \Drupal\Core\Plugin\ContextAwarePluginInterface $plugin
    *   The plugin that is prepared.
-   * @param \Drupal\rules\Context\ExecutionMetadataStateInterface $metadata_state
+   * @param \Drupal\social_automation\Context\ExecutionMetadataStateInterface $metadata_state
    *   The metadata state, prepared for the current expression.
    *
    * @throws \Drupal\Component\Plugin\Exception\ContextException
@@ -134,7 +134,7 @@ trait ContextHandlerTrait {
         $plugin->refineContextDefinitions($selected_data);
       }
       catch (ContextException $e) {
-        if (strpos($e->getMessage(), 'context is required') === FALSE) {
+        if (!str_contains($e->getMessage(), 'context is required')) {
           throw $e;
         }
       }
@@ -144,7 +144,7 @@ trait ContextHandlerTrait {
   /**
    * Gets definitions of all selected data at configuration time.
    *
-   * @param \Drupal\rules\Context\ExecutionMetadataStateInterface $metadata_state
+   * @param \Drupal\social_automation\Context\ExecutionMetadataStateInterface $metadata_state
    *   The metadata state.
    *
    * @return \Drupal\Core\TypedData\DataDefinitionInterface[]
@@ -177,14 +177,14 @@ trait ContextHandlerTrait {
    *
    * @param string $context_name
    *   The name of the context.
-   * @param \Drupal\rules\Context\ExecutionMetadataStateInterface $metadata_state
+   * @param \Drupal\social_automation\Context\ExecutionMetadataStateInterface $metadata_state
    *   The metadata state containing metadata about available variables.
    *
    * @return \Drupal\Core\TypedData\DataDefinitionInterface|null
    *   A data definition if the property path could be applied, or NULL if the
    *   context is not mapped.
    *
-   * @throws \Drupal\rules\Exception\IntegrityException
+   * @throws \Drupal\social_automation\Exception\IntegrityException
    *   Thrown if the data selector that is configured for the context is
    *   invalid.
    */
@@ -199,8 +199,8 @@ trait ContextHandlerTrait {
    *
    * @param \Drupal\Core\Plugin\ContextAwarePluginInterface $plugin
    *   The context aware plugin of which to add provided context.
-   * @param \Drupal\rules\Context\ExecutionStateInterface $state
-   *   The Rules state where the context variables are added.
+   * @param \Drupal\social_automation\Context\ExecutionStateInterface $state
+   *   The Automation state where the context variables are added.
    */
   protected function addProvidedContext(CoreContextAwarePluginInterface $plugin, ExecutionStateInterface $state) {
     // If the plugin does not support providing context, there is nothing to do.
@@ -209,8 +209,8 @@ trait ContextHandlerTrait {
     }
     $provides = $plugin->getProvidedContextDefinitions();
     foreach ($provides as $name => $provided_definition) {
-      // Avoid name collisions in the rules state: provided variables can be
-      // renamed.
+      // Avoid name collisions in the automation state: provided variables
+      // can be renamed.
       if (isset($this->configuration['provides_mapping'][$name])) {
         $state->setVariableData($this->configuration['provides_mapping'][$name], $plugin->getProvidedContext($name)->getContextData());
       }
@@ -225,7 +225,7 @@ trait ContextHandlerTrait {
    *
    * @param \Drupal\Core\Plugin\ContextAwarePluginInterface $plugin
    *   The context aware plugin of which to add provided context.
-   * @param \Drupal\rules\Context\ExecutionMetadataStateInterface $metadata_state
+   * @param \Drupal\social_automation\Context\ExecutionMetadataStateInterface $metadata_state
    *   The execution metadata state to add variables to.
    */
   protected function addProvidedContextDefinitions(CoreContextAwarePluginInterface $plugin, ExecutionMetadataStateInterface $metadata_state) {
@@ -255,11 +255,12 @@ trait ContextHandlerTrait {
    *
    * @param \Drupal\Core\Plugin\ContextAwarePluginInterface $plugin
    *   The context aware plugin.
-   * @param \Drupal\rules\Context\ExecutionMetadataStateInterface $metadata_state
+   * @param \Drupal\social_automation\Context\ExecutionMetadataStateInterface $metadata_state
    *   The execution metadata state.
    */
   protected function assertMetadata(CoreContextAwarePluginInterface $plugin, ExecutionMetadataStateInterface $metadata_state) {
-    // If the plugin does not implement the Rules-enhanced interface, skip this.
+    // If the plugin does not implement the Automation-enhanced interface,
+    // skip this.
     if (!$plugin instanceof ContextAwarePluginInterface) {
       return;
     }
@@ -280,21 +281,21 @@ trait ContextHandlerTrait {
    *
    * @param \Drupal\Core\Plugin\ContextAwarePluginInterface $plugin
    *   The plugin to process the context data on.
-   * @param \Drupal\rules\Context\ExecutionStateInterface $rules_state
-   *   The current Rules execution state with context variables.
+   * @param \Drupal\social_automation\Context\ExecutionStateInterface $social_automation_state
+   *   The current Automation execution state with context variables.
    */
-  protected function processData(CoreContextAwarePluginInterface $plugin, ExecutionStateInterface $rules_state) {
+  protected function processData(CoreContextAwarePluginInterface $plugin, ExecutionStateInterface $social_automation_state) {
     if (isset($this->configuration['context_processors'])) {
       foreach ($this->configuration['context_processors'] as $context_name => $processors) {
         $definition = $plugin->getContextDefinition($context_name);
         $value = $plugin->getContextValue($context_name);
         if ($definition->isMultiple()) {
           foreach ($value as &$current) {
-            $current = $this->processValue($current, $processors, $rules_state);
+            $current = $this->processValue($current, $processors, $social_automation_state);
           }
         }
         else {
-          $value = $this->processValue($value, $processors, $rules_state);
+          $value = $this->processValue($value, $processors, $social_automation_state);
         }
         $plugin->setContextValue($context_name, $value);
       }
@@ -308,16 +309,16 @@ trait ContextHandlerTrait {
    *   The current value.
    * @param array $processors
    *   An array mapping processor plugin IDs to their configuration.
-   * @param \Drupal\rules\Context\ExecutionStateInterface $rules_state
-   *   The current Rules execution state with context variables.
+   * @param \Drupal\social_automation\Context\ExecutionStateInterface $social_automation_state
+   *   The current Automation execution state with context variables.
    *
    * @return mixed
    *   THe processed value.
    */
-  protected function processValue($value, array $processors, ExecutionStateInterface $rules_state) {
+  protected function processValue($value, array $processors, ExecutionStateInterface $social_automation_state) {
     foreach ($processors as $processor_plugin_id => $configuration) {
       $data_processor = $this->processorManager->createInstance($processor_plugin_id, $configuration);
-      $value = $data_processor->process($value, $rules_state);
+      $value = $data_processor->process($value, $social_automation_state);
     }
     return $value;
   }

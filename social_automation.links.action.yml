@@ -1,0 +1,15 @@
+# Action links for social_automation.
+
+# Automation reaction related actions.
+social_automation_workflow_event_add_action:
+  route_name: entity.social_automation_workflow_event.add_form
+  title: 'Add workflow event'
+  appears_on:
+    - entity.social_automation_workflow_event.collection
+
+# Automation component related actions.
+automation_component_add_action:
+  route_name: entity.automation_component.add_form.workflowevent
+  title: 'Add component'
+  appears_on:
+    - entity.automation_component.collection

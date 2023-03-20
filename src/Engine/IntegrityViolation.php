@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\rules\Engine;
+namespace Drupal\social_automation\Engine;
 
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
- * Holds information about an integrity violation in a Rules expression.
+ * Holds information about an integrity violation in a Automation expression.
  */
 class IntegrityViolation implements IntegrityViolationInterface {
 

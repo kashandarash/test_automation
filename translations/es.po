@@ -1,0 +1,1674 @@
+# $Id$
+# English translation of social_automation
+# Copyright 2021 Open Social <devel@getopensocial.com>
+# Generated from files:
+# social_automation.drush.inc: n/a
+# config/schema/social_automation.expression.schema.yml: n/a
+# config/schema/social_automation.schema.yml: n/a
+# src/Controller/AutomationReactionListBuilder.php: n/a
+# src/Entity/WorkflowEventConfig.php: n/a
+# src/Plugin/AutomationExpression/AutomationExpression.php: n/a
+# config/schema/social_automation.context.schema.yml: n/a
+# src/Form/AutomationComponentFormBase.php: n/a
+# src/Commands/AutomationCommands.php: n/a
+# social_automation.module: n/a
+# social_automation.links.task.yml: n/a
+# src/Plugin/AutomationAction/AutomationComponentActionDeriver.php: n/a
+# social_automation.info.yml: n/a
+# social_automation.links.action.yml: n/a
+# social_automation.routing.yml: n/a
+# social_automation.links.menu.yml: n/a
+# src/Form/AutomationSettingsForm.php: n/a
+# social_automation.permissions.yml: n/a
+# src/Entity/WorkflowComponentConfig.php: n/a
+# config/schema/social_automation.action.schema.yml: n/a
+# config/schema/social_automation.condition.schema.yml: n/a
+# src/Controller/AutomationComponentListBuilder.php: n/a
+# src/Plugin/Condition/EntityIsOfBundle.php: n/a
+# src/Plugin/Condition/EntityIsOfType.php: n/a
+# config/schema/social_automation.data_types.schema.yml: n/a
+# src/Form/Expression/ConditionForm.php: n/a
+# src/Form/Expression/ConditionContainerForm.php: n/a
+# src/Plugin/AutomationExpression/ActionSetExpression.php: n/a
+# src/Form/Expression/ActionContainerForm.php: n/a
+# src/Form/WorkflowEventEditForm.php: n/a
+# js/debug.js: n/a
+# src/Context/ContextHandlerIntegrityTrait.php: n/a
+# src/Context/Form/ContextFormTrait.php: n/a
+# src/ContextProvider/CurrentDateContext.php: n/a
+# src/Plugin/DataType/CurrentDate.php: n/a
+# src/ContextProvider/CurrentPathContext.php: n/a
+# src/Plugin/DataType/CurrentPath.php: n/a
+# src/ContextProvider/SiteContext.php: n/a
+# src/Plugin/DataType/Site.php: n/a
+# src/Controller/AutomationReactionController.php: n/a
+# src/Core/ConditionManager.php: n/a
+# src/Core/Annotation/Condition.php: n/a
+# src/Plugin/AutomationTrigger/UserHasNotLoggedInForWeeks.php: n/a
+# src/Plugin/AutomationTrigger/UserLogin.php: n/a
+# src/Engine/AutomationComponent.php: n/a
+# src/EventSubscriber/GenericEventSubscriber.php: n/a
+# src/Form/AddExpressionForm.php: n/a
+# src/Form/AutomationComponentAddForm.php: n/a
+# src/Form/AutomationComponentEditForm.php: n/a
+# src/Form/WorkflowEventAddForm.php: n/a
+# src/Form/Expression/ActionForm.php: n/a
+# src/Form/BreakLockForm.php: n/a
+# src/Form/DeleteExpressionForm.php: n/a
+# src/Form/EditExpressionForm.php: n/a
+# src/Plugin/AutomationExpression/ActionExpression.php: n/a
+# src/Plugin/AutomationExpression/ConditionExpression.php: n/a
+# src/Form/Expression/ExpressionContainerFormBase.php: n/a
+# src/Logger/AutomationDebugLog.php: n/a
+# src/Plugin/AutomationAction/SystemEmailToUsersOfRole.php: n/a
+# src/Plugin/AutomationAction/SystemMessage.php: n/a
+# src/Plugin/AutomationAction/SystemSendEmail.php: n/a
+# src/Plugin/AutomationDataProcessor/NumericOffset.php: n/a
+# src/Plugin/AutomationDataProcessor/TokenProcessor.php: n/a
+# src/Plugin/AutomationEvent/EntityDeleteDeriver.php: n/a
+# src/Plugin/AutomationEvent/EntityInsertDeriver.php: n/a
+# src/Plugin/AutomationEvent/EntityPresaveDeriver.php: n/a
+# src/Plugin/AutomationEvent/EntityUpdateDeriver.php: n/a
+# src/Plugin/AutomationEvent/EntityViewDeriver.php: n/a
+# src/Plugin/AutomationExpression/AndExpression.php: n/a
+# src/Plugin/AutomationExpression/OrExpression.php: n/a
+# src/Plugin/AutomationExpression/LoopExpression.php: n/a
+# src/Plugin/AutomationTrigger/EventHasPassed.php: n/a
+# src/Plugin/AutomationTrigger/UserCreatesBook.php: n/a
+# src/Plugin/AutomationTrigger/UserCreatesComment.php: n/a
+# src/Plugin/AutomationTrigger/UserCreatesEvent.php: n/a
+# src/Plugin/AutomationTrigger/UserCreatesLike.php: n/a
+# src/Plugin/AutomationTrigger/UserCreatesPage.php: n/a
+# src/Plugin/AutomationTrigger/UserCreatesPost.php: n/a
+# src/Plugin/AutomationTrigger/UserCreatesTopic.php: n/a
+# src/Plugin/AutomationTrigger/UserDownloadsFile.php: n/a
+# src/Plugin/AutomationTrigger/UserEnrollsInEvent.php: n/a
+# src/Plugin/AutomationTrigger/UserFollowsContent.php: n/a
+# src/Plugin/AutomationTrigger/UserJoinsGroup.php: n/a
+# src/Plugin/AutomationTrigger/UserLeavesGroup.php: n/a
+# src/Plugin/AutomationTrigger/UserRequestToJoinEvent.php: n/a
+# src/Plugin/AutomationTrigger/UserRequestToJoinGroup.php: n/a
+# src/Plugin/Condition/EntityHasField.php: n/a
+# src/Ui/TempStoreTrait.php: n/a
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: social_automation\n"
+"POT-Creation-Date: 2022-09-20 09:51+0000\n"
+"PO-Revision-Date: 2023-03-03 22:09+0000\n"
+"Last-Translator: Bram ten Hove <bram.ten.hove@goalgorilla.com>\n"
+"Language-Team: Spanish <https://translate.getopensocial.com/projects/"
+"open-social/social-automation/es/>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.14\n"
+
+#: src/Plugin/AutomationExpression/AndExpression.php:39;46
+#: src/Plugin/AutomationExpression/OrExpression.php:26;33
+msgid "%label evaluated to %result."
+msgstr "%label evaluada a %result."
+
+#: js/debug.js:0;0
+msgid "-Close all-"
+msgstr "-Cerrar todo-"
+
+#: js/debug.js:0;0;0
+msgid "-Open all-"
+msgstr "-Abre todo-"
+
+#: src/Plugin/AutomationEvent/EntityViewDeriver.php:60
+msgid "@entity_type is viewed"
+msgstr "@entity_type se ve"
+
+#: src/Plugin/AutomationAction/AutomationComponentActionDeriver.php:69
+msgid "@expression_type: @label"
+msgstr "@expression_type: @label"
+
+#: src/Plugin/AutomationExpression/ConditionExpression.php:161
+msgid "@not @label"
+msgstr "@not @label"
+
+#: src/Form/AutomationComponentFormBase.php:61
+msgid ""
+"A unique machine-readable name for your component. Can only contain "
+"lowercase letters, numbers, and underscores."
+msgstr ""
+"Un nombre único legible por máquina para su componente. Solo puede contener "
+"letras minúsculas, números y guiones bajos."
+
+#: social_automation.module:77
+msgid "About"
+msgstr "Acerca de"
+
+#: social_automation.permissions.yml:0
+msgid "Access the Automation debug log."
+msgstr "Accede al registro de depuración de Automatización."
+
+#: src/Form/Expression/ActionForm.php:65
+#: src/Plugin/AutomationExpression/ActionExpression.php:18
+msgid "Action"
+msgstr "Acción"
+
+#: src/Plugin/AutomationExpression/ActionExpression.php:155
+msgid "Action plugin %plugin_id does not exist"
+msgstr "El plugin de acción %plugin_id no existe"
+
+#: config/schema/social_automation.expression.schema.yml:0
+msgid "Action plugin ID"
+msgstr "ID del plugin de acción"
+
+#: src/Plugin/AutomationExpression/ActionExpression.php:151
+msgid "Action plugin ID is missing"
+msgstr "Falta el ID del plugin de acción"
+
+#: config/schema/social_automation.expression.schema.yml:0
+#: src/Plugin/AutomationExpression/ActionSetExpression.php:8
+msgid "Action set"
+msgstr "Conjunto de acciones"
+
+#: src/Form/Expression/ActionForm.php:90
+msgid "Action: @summary"
+msgstr "Acción: @summary"
+
+#: config/schema/social_automation.expression.schema.yml:0;0
+#: src/Form/Expression/ActionContainerForm.php:39
+msgid "Actions"
+msgstr "Acciones"
+
+#: social_automation.drush.inc:50
+msgid "Active"
+msgstr "Activo"
+
+#: src/Form/AddExpressionForm.php:101
+msgid "Add @expression"
+msgstr "Añadir @expression"
+
+#: src/Form/Expression/ActionContainerForm.php:105
+msgid "Add action"
+msgstr "Añadir acción"
+
+#: social_automation.links.action.yml:0
+msgid "Add component"
+msgstr "Añadir componente"
+
+#: src/Form/Expression/ConditionContainerForm.php:105
+msgid "Add condition"
+msgstr "Añadir condición"
+
+#: social_automation.links.action.yml:0 social_automation.routing.yml:0
+msgid "Add workflow event"
+msgstr "Añadir evento de flujo de trabajo"
+
+#: social_automation.routing.yml:0
+msgid "Add workflowevent"
+msgstr "Añadir evento de flujo de trabajo"
+
+#: src/Form/Expression/ActionForm.php:112
+#: src/Form/Expression/ConditionForm.php:124
+msgid ""
+"Adjust the name of provided variables, but note that renaming of already "
+"utilized variables invalidates the existing uses."
+msgstr ""
+"Ajuste el nombre de las variables proporcionadas, pero tenga en cuenta que "
+"el cambio de nombre de las variables ya utilizadas invalida los usos "
+"existentes."
+
+#: social_automation.permissions.yml:0
+msgid "Administer Automation"
+msgstr "Administrar la automatización"
+
+#: social_automation.permissions.yml:0
+msgid "Administer Automation component configurations and settings."
+msgstr ""
+"Administrar las configuraciones y ajustes de los componentes de "
+"Automatización."
+
+#: social_automation.permissions.yml:0
+msgid "Administer Automation components"
+msgstr "Administrar componentes de automatización"
+
+#: social_automation.permissions.yml:0
+msgid "Administer Automation reaction configurations and settings."
+msgstr "Administrar configuraciones y ajustes de reacción de Automatización."
+
+#: social_automation.permissions.yml:0
+msgid "Administer Automation reactions"
+msgstr "Administrar las reacciones de automatización"
+
+#: social_automation.permissions.yml:0
+msgid "Administer all Automation configurations and settings."
+msgstr "Administrar todas las configuraciones y ajustes de Automatización."
+
+#: config/schema/social_automation.schema.yml:0;0
+msgid "Administrative description"
+msgstr "Descripción administrativa"
+
+#: src/Plugin/AutomationEvent/EntityDeleteDeriver.php:60
+msgid "After deleting a @entity_type"
+msgstr "Después de borrar un @entity_type"
+
+#: src/Plugin/AutomationEvent/EntityInsertDeriver.php:60
+msgid "After saving a new @entity_type"
+msgstr "Después de guardar un nuevo @entity_type"
+
+#: src/Plugin/AutomationEvent/EntityUpdateDeriver.php:60
+msgid "After updating a @entity_type"
+msgstr "Después de actualizar un @entity_type"
+
+#: config/schema/social_automation.schema.yml:0
+msgid "Also log debug information to system log"
+msgstr "También registra información de depuración en el registro del sistema"
+
+#: src/Form/AutomationSettingsForm.php:73
+msgid "Also log debug information to the system log"
+msgstr "También registra información de depuración en el registro del sistema"
+
+#: src/Plugin/AutomationDataProcessor/NumericOffset.php:9
+msgid "Apply numeric offset"
+msgstr "Aplicar offset numérico"
+
+#: src/Form/DeleteExpressionForm.php:62
+msgid "Are you sure you want to delete %title from %workflowevent?"
+msgstr "¿Está seguro de que desea eliminar %title de %workflowevent?"
+
+#: social_automation.drush.inc:290 src/Commands/AutomationCommands.php:234
+msgid ""
+"Are you sure you want to delete the workflowevent named \"@name\"? This "
+"action cannot be undone."
+msgstr ""
+"¿Está seguro de que desea eliminar el evento de flujo de trabajo denominado "
+"\"@name\"? Esta acción no se puede deshacer."
+
+#: src/Commands/AutomationCommands.php:303
+msgid ""
+"Are you sure you want to revert the workflowevent named \"@name\"? This "
+"action cannot be undone."
+msgstr ""
+"¿Está seguro de que desea revertir el evento de flujo de trabajo denominado "
+"\"@name\"? Esta acción no se puede deshacer."
+
+#: social_automation.routing.yml:0
+msgid "Automation"
+msgstr "Automatización"
+
+#: config/schema/social_automation.expression.schema.yml:0
+msgid "Automation And"
+msgstr "Automatización y"
+
+#: src/Controller/AutomationComponentListBuilder.php:64
+msgid "Automation Component"
+msgstr "Componente de automatización"
+
+#: config/schema/social_automation.expression.schema.yml:0
+msgid "Automation Or"
+msgstr "Automatización o"
+
+#: config/schema/social_automation.expression.schema.yml:0
+msgid "Automation action configuration"
+msgstr "Configuración de acciones de automatización"
+
+#: social_automation.drush.inc:136
+msgid "Automation commands"
+msgstr "Comandos de automatización"
+
+#: config/schema/social_automation.schema.yml:0
+#: src/Entity/WorkflowComponentConfig.php:12
+msgid "Automation component"
+msgstr "Componente de automatización"
+
+#: config/schema/social_automation.data_types.schema.yml:0
+msgid "Automation component (embedded)"
+msgstr "Componente de automatización (integrado)"
+
+#: social_automation.routing.yml:0 src/Entity/WorkflowComponentConfig.php:12
+msgid "Automation components"
+msgstr "Componentes de automatización"
+
+#: config/schema/social_automation.expression.schema.yml:0
+msgid "Automation condition configuration"
+msgstr "Configuración de las condiciones de automatización"
+
+#: src/Logger/AutomationDebugLog.php:128
+msgid "Automation evaluation log"
+msgstr "Registro de evaluación de la automatización"
+
+#: config/schema/social_automation.expression.schema.yml:0
+msgid "Automation expression"
+msgstr "Expresión de automatización"
+
+#: config/schema/social_automation.expression.schema.yml:0
+msgid "Automation expression default configuration"
+msgstr "Configuración por defecto de la expresión de automatización"
+
+#: social_automation.routing.yml:0 config/schema/social_automation.schema.yml:0
+msgid "Automation settings"
+msgstr "Ajustes de automatización"
+
+#: src/Engine/AutomationComponent.php:239
+msgid "AutomationComponent: Workflow event %label fires."
+msgstr ""
+"Componente de automatización: Evento de flujo de trabajo %label dispara."
+
+#: src/Engine/AutomationComponent.php:245
+msgid "AutomationComponent: Workflow event %label has fired."
+msgstr ""
+"AutomationComponent: El evento de flujo de trabajo %label se ha disparado."
+
+#: src/Plugin/AutomationEvent/EntityPresaveDeriver.php:60
+msgid "Before saving a @entity_type"
+msgstr "Antes de guardar un @entity_type"
+
+#: src/Form/BreakLockForm.php:96
+msgid "Break lock"
+msgstr "Desbloquear"
+
+#: src/Plugin/Condition/EntityIsOfBundle.php:8
+msgid "Bundle"
+msgstr "Paquete"
+
+#: src/Form/BreakLockForm.php:80
+msgid "By breaking this lock, any unsaved changes made by @user will be lost."
+msgstr ""
+"Rompiendo este bloqueo, cualquier cambio no salvado realizado por @user se "
+"perderá."
+
+#: social_automation.permissions.yml:0
+msgid "Bypass Automation access control"
+msgstr "Anular el control de acceso a la automatización"
+
+#: src/Form/AutomationComponentEditForm.php:68
+#: src/Form/WorkflowEventEditForm.php:137
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/Form/AutomationComponentEditForm.php:96
+#: src/Form/WorkflowEventEditForm.php:165
+msgid "Canceled."
+msgstr "Cancelado."
+
+#: src/Form/AutomationComponentAddForm.php:46
+msgid "Component %label has been created."
+msgstr "El componente %label ha sido creado."
+
+#: social_automation.module:88 social_automation.links.task.yml:0
+#: src/Plugin/AutomationAction/AutomationComponentActionDeriver.php:73
+msgid "Components"
+msgstr "Componentes"
+
+#: src/Controller/AutomationComponentListBuilder.php:125
+msgid ""
+"Components are stand-alone sets of Automation configuration that can be used "
+"by Automation and other modules on your site. Components are for example "
+"useful if you want to use the same conditions, actions or automation in "
+"multiple places, or call them from your custom module. You may also export "
+"each component separately. See the <a href=\":documentation\">online "
+"documentation</a> for more information about how to use components."
+msgstr ""
+"Los componentes son conjuntos independientes de configuración de "
+"Automatización que pueden ser utilizados por Automatización y otros módulos "
+"en su sitio. Los componentes son útiles, por ejemplo, si desea utilizar las "
+"mismas condiciones, acciones o automatizaciones en varios lugares, o "
+"llamarlas desde su módulo personalizado. También puede exportar cada "
+"componente por separado. Consulte la documentación en línea <a href=\":"
+"documentation\"></a> para obtener más información sobre cómo utilizar los "
+"componentes."
+
+#: src/Form/Expression/ConditionForm.php:76
+#: src/Plugin/AutomationExpression/ConditionExpression.php:18
+msgid "Condition"
+msgstr "Condición"
+
+#: src/Plugin/AutomationExpression/ConditionExpression.php:193
+msgid "Condition plugin %plugin_id does not exist"
+msgstr "La condición plugin %plugin_id no existe"
+
+#: config/schema/social_automation.expression.schema.yml:0
+msgid "Condition plugin ID"
+msgstr "ID del plugin de condición"
+
+#: src/Plugin/AutomationExpression/ConditionExpression.php:189
+msgid "Condition plugin ID is missing"
+msgstr "Falta el ID del plugin de condición"
+
+#: src/Plugin/AutomationExpression/AndExpression.php:8
+msgid "Condition set (AND)"
+msgstr "Condición establecida (AND)"
+
+#: src/Plugin/AutomationExpression/OrExpression.php:8
+msgid "Condition set (OR)"
+msgstr "Conjunto de condiciones (OR)"
+
+#: src/Form/Expression/ConditionForm.php:102
+msgid "Condition: @summary"
+msgstr "Condición: @summary"
+
+#: config/schema/social_automation.expression.schema.yml:0;0;0
+#: src/Form/Expression/ConditionContainerForm.php:39
+msgid "Conditions"
+msgstr "Condiciones"
+
+#: config/schema/social_automation.schema.yml:0
+msgid "Configuration"
+msgstr "Configuración"
+
+#: config/schema/social_automation.schema.yml:0;0
+msgid "Configuration schema version"
+msgstr "Versión del esquema de configuración"
+
+#: config/schema/social_automation.context.schema.yml:0
+msgid "Context definition"
+msgstr "Definición del contexto"
+
+#: config/schema/social_automation.data_types.schema.yml:0
+msgid "Context definitions"
+msgstr "Definiciones contextuales"
+
+#: config/schema/social_automation.context.schema.yml:0
+#: config/schema/social_automation.expression.schema.yml:0;0
+msgid "Context mapping"
+msgstr "Cartografía contextual"
+
+#: config/schema/social_automation.context.schema.yml:0
+#: config/schema/social_automation.expression.schema.yml:0;0
+msgid "Context processors"
+msgstr "Procesadores de contexto"
+
+#: config/schema/social_automation.action.schema.yml:0
+#: config/schema/social_automation.condition.schema.yml:0
+#: config/schema/social_automation.context.schema.yml:0
+#: config/schema/social_automation.expression.schema.yml:0;0
+msgid "Context values"
+msgstr "Valores contextuales"
+
+#: src/Form/Expression/ActionForm.php:98
+#: src/Form/Expression/ConditionForm.php:110
+msgid "Context variables"
+msgstr "Variables de contexto"
+
+#: src/Form/Expression/ActionForm.php:71
+#: src/Form/Expression/ConditionForm.php:82
+msgid "Continue"
+msgstr "Continuar"
+
+#: social_automation.permissions.yml:0
+msgid ""
+"Control all configurations regardless of permission restrictions of events, "
+"conditions or actions."
+msgstr ""
+"Controle todas las configuraciones independientemente de las restricciones "
+"de permisos de eventos, condiciones o acciones."
+
+#: social_automation.drush.inc:240;262
+msgid "Could not find a Workflow event named \"@name\"."
+msgstr "No se pudo encontrar un evento de flujo de trabajo llamado \"@name\"."
+
+#: src/Commands/AutomationCommands.php:160;193
+msgid "Could not find a Workflow event named @name"
+msgstr "No se pudo encontrar un evento de flujo de trabajo llamado @name"
+
+#: social_automation.drush.inc:287;308
+msgid ""
+"Could not find a Workflow event or a Automation Component named \"@name\"."
+msgstr ""
+"No se pudo encontrar un evento de Flujo de Trabajo o un Componente de "
+"Automatización llamado \"@name\"."
+
+#: src/Commands/AutomationCommands.php:231;266;298
+msgid "Could not find a Workflow event or a Automation Component named @name"
+msgstr ""
+"No se pudo encontrar un evento de Flujo de Trabajo o un Componente de "
+"Automatización llamado @name"
+
+#: src/ContextProvider/CurrentDateContext.php:40
+#: src/Plugin/DataType/CurrentDate.php:7;7
+msgid "Current date"
+msgstr "Fecha actual"
+
+#: src/ContextProvider/CurrentPathContext.php:45
+#: src/Plugin/DataType/CurrentPath.php:7;7
+msgid "Current path"
+msgstr "Trayectoria actual"
+
+#: src/Context/Form/ContextFormTrait.php:45
+msgid "Data selector"
+msgstr "Selector de datos"
+
+#: src/Context/ContextHandlerIntegrityTrait.php:52
+msgid "Data selector %selector for context %context_name is invalid. @message"
+msgstr ""
+"El selector de datos %selector para el contexto %context_name no es válido. "
+"@message"
+
+#: config/schema/social_automation.schema.yml:0
+#: src/Form/AutomationSettingsForm.php:81
+msgid "Debug log level"
+msgstr "Nivel de registro de depuración"
+
+#: config/schema/social_automation.schema.yml:0
+#: src/Form/AutomationSettingsForm.php:51
+msgid "Debug logging"
+msgstr "Registro de depuración"
+
+#: src/Form/DeleteExpressionForm.php:49
+#: src/Form/Expression/ActionContainerForm.php:82
+#: src/Form/Expression/ConditionContainerForm.php:82
+msgid "Delete"
+msgstr "Eliminar"
+
+#: social_automation.drush.inc:83;161
+msgid "Deletes a workflowevent on your site."
+msgstr "Elimina un workflowevent en su sitio."
+
+#: config/schema/social_automation.context.schema.yml:0
+#: src/Controller/AutomationComponentListBuilder.php:66
+#: src/Controller/AutomationReactionListBuilder.php:89
+#: src/Form/AutomationComponentFormBase.php:85
+msgid "Description"
+msgstr "Descripción"
+
+#: social_automation.drush.inc:139
+msgid "Developer-specific commands for the Automation module."
+msgstr "Comandos específicos del desarrollador para el módulo Automatización."
+
+#: social_automation.routing.yml:0
+msgid "Disable workflow event"
+msgstr "Desactivar evento de flujo de trabajo"
+
+#: social_automation.drush.inc:206 src/Commands/AutomationCommands.php:125
+msgid "Disabled"
+msgstr "Desactivado"
+
+#: src/Controller/AutomationReactionListBuilder.php:189
+msgctxt "Plural"
+msgid "Disabled"
+msgstr "Desactivado"
+
+#: social_automation.drush.inc:71
+msgid "Disables a workflowevent on your site."
+msgstr "Desactiva un workflowevent en su sitio."
+
+#: social_automation.drush.inc:79
+msgid "Disables the workflowevent with machine name \"test_workflowevent\"."
+msgstr ""
+"Desactiva el workflowevent con nombre de máquina \"test_workflowevent\"."
+
+#: social_automation.drush.inc:148
+msgid "Disables/deactivates a Workflow event on your site."
+msgstr "Desactiva/desactiva un evento de Workflow en su sitio."
+
+#: src/Form/BreakLockForm.php:67
+msgid "Do you want to break the lock on %label?"
+msgstr "¿Quieres romper el bloqueo de %label?"
+
+#: src/Form/Expression/ActionContainerForm.php:76
+#: src/Form/Expression/ConditionContainerForm.php:76
+msgid "Edit"
+msgstr "Editar"
+
+#: src/Form/EditExpressionForm.php:141
+msgid "Edit @expression"
+msgstr "Editar @expression"
+
+#: src/Form/AutomationComponentEditForm.php:104
+msgid "Edit automation component \"@label\""
+msgstr "Editar componente de automatización \"@label\""
+
+#: src/Form/WorkflowEventEditForm.php:173
+msgid "Edit workflow event \"@label\""
+msgstr "Editar evento de flujo de trabajo \"@label\""
+
+#: src/Plugin/AutomationAction/SystemSendEmail.php:12
+msgid "Email address(es) drupal will send an email to."
+msgstr ""
+"Dirección(es) de correo electrónico a las que drupal enviará un mensaje."
+
+#: src/Form/AutomationSettingsForm.php:55
+msgid "Enable debug logging"
+msgstr "Activar el registro de depuración"
+
+#: config/schema/social_automation.schema.yml:0
+msgid "Enable debug logging to screen"
+msgstr "Activar el registro de depuración en pantalla"
+
+#: social_automation.routing.yml:0
+msgid "Enable workflow event"
+msgstr "Activar evento de flujo de trabajo"
+
+#: social_automation.drush.inc:206 src/Commands/AutomationCommands.php:125
+msgid "Enabled"
+msgstr "Activado"
+
+#: src/Controller/AutomationReactionListBuilder.php:184
+msgctxt "Plural"
+msgid "Enabled"
+msgstr "Activado"
+
+#: social_automation.drush.inc:58
+msgid "Enables a workflowevent on your site."
+msgstr "Habilita un workflowevent en su sitio."
+
+#: social_automation.drush.inc:66
+msgid "Enables the workflowevent with machine name \"test_workflowevent\"."
+msgstr "Habilita el workflowevent con nombre de máquina \"test_workflowevent\"."
+
+#: social_automation.drush.inc:145
+msgid "Enables/activates a Workflow event on your site."
+msgstr "Habilita/activa un evento de Workflow en su sitio."
+
+#: src/Form/AutomationComponentFormBase.php:84
+msgid ""
+"Enter a description for this component, to help document what this component "
+"is intended to do."
+msgstr ""
+"Introduzca una descripción para este componente, para ayudar a documentar lo "
+"que este componente está destinado a hacer."
+
+#: src/Form/AutomationComponentFormBase.php:77
+msgid ""
+"Enter a list of comma-separated keywords here; e.g., \"notification, "
+"publishing\". Tags are keywords used for filtering available components in "
+"the administration interface."
+msgstr ""
+"Introduzca aquí una lista de palabras clave separadas por comas; por "
+"ejemplo, \"notificación, publicación\". Las etiquetas son palabras clave "
+"utilizadas para filtrar los componentes disponibles en la interfaz de "
+"administración."
+
+#: src/Form/AutomationComponentFormBase.php:53
+msgid ""
+"Enter a name to be used to identify your component in the administrative "
+"interface."
+msgstr ""
+"Introduzca un nombre que se utilizará para identificar su componente en la "
+"interfaz administrativa."
+
+#: src/Controller/AutomationComponentListBuilder.php:146
+msgid ""
+"Enter a part of the component name, machine name, description, or tag to "
+"filter by."
+msgstr ""
+"Introduzca una parte del nombre del componente, el nombre de la máquina, la "
+"descripción o la etiqueta por la que filtrar."
+
+#: src/Controller/AutomationReactionListBuilder.php:178
+msgid ""
+"Enter a part of the workflowevent name, machine name, event, description, or "
+"tag to filter by."
+msgstr ""
+"Introduzca una parte del flujo de trabajonombre del evento, nombre de la "
+"máquina, evento, descripción o etiqueta por la que filtrar."
+
+#: src/Context/Form/ContextFormTrait.php:78
+msgid "Enter one value per line for this multi-valued context."
+msgstr "Introduzca un valor por línea para este contexto multivalor."
+
+#: src/Plugin/AutomationTrigger/UserCreatesBook.php:7
+#: src/Plugin/AutomationTrigger/UserCreatesComment.php:7
+#: src/Plugin/AutomationTrigger/UserCreatesEvent.php:7
+#: src/Plugin/AutomationTrigger/UserCreatesLike.php:7
+#: src/Plugin/AutomationTrigger/UserCreatesPage.php:7
+#: src/Plugin/AutomationTrigger/UserCreatesPost.php:7
+#: src/Plugin/AutomationTrigger/UserCreatesTopic.php:7
+#: src/Plugin/AutomationTrigger/UserDownloadsFile.php:7
+#: src/Plugin/AutomationTrigger/UserEnrollsInEvent.php:7
+#: src/Plugin/AutomationTrigger/UserFollowsContent.php:7
+#: src/Plugin/AutomationTrigger/UserJoinsGroup.php:7
+#: src/Plugin/AutomationTrigger/UserLeavesGroup.php:7
+#: src/Plugin/AutomationTrigger/UserRequestToJoinEvent.php:7
+#: src/Plugin/AutomationTrigger/UserRequestToJoinGroup.php:7
+#: src/Plugin/Condition/EntityHasField.php:8;8
+#: src/Plugin/Condition/EntityIsOfBundle.php:8;8
+#: src/Plugin/Condition/EntityIsOfType.php:8;8
+msgid "Entity"
+msgstr "Entidad"
+
+#: src/Plugin/Condition/EntityHasField.php:8
+msgid "Entity has field"
+msgstr "La entidad tiene campo"
+
+#: config/schema/social_automation.condition.schema.yml:0
+msgid "Entity is new context values"
+msgstr "La entidad es nuevos valores de contexto"
+
+#: src/Plugin/Condition/EntityIsOfBundle.php:8
+msgid "Entity is of bundle"
+msgstr "La entidad es del haz"
+
+#: src/Plugin/Condition/EntityIsOfType.php:8
+msgid "Entity is of type"
+msgstr "La entidad es del tipo"
+
+#: src/Plugin/AutomationExpression/AutomationExpression.php:108
+msgid "Evaluating conditions of workflowevent %label."
+msgstr "Evaluando condiciones de workflowevent %label."
+
+#: src/Plugin/AutomationExpression/ActionExpression.php:104
+msgid "Evaluating the action %name."
+msgstr "Evaluando la acción %name."
+
+#: src/Form/AutomationSettingsForm.php:47
+msgid ""
+"Evaluation errors are logged to the system database logger and all other "
+"registered loggers."
+msgstr ""
+"Los errores de evaluación se registran en el logger de la base de datos del "
+"sistema y en todos los demás loggers registrados."
+
+#: config/schema/social_automation.schema.yml:0
+#: src/Form/AutomationSettingsForm.php:41
+msgid "Evaluation errors log level"
+msgstr "Nivel de registro de errores de evaluación"
+
+#: social_automation.drush.inc:49 config/schema/social_automation.schema.yml:0
+#: src/Controller/AutomationReactionListBuilder.php:88
+msgid "Event"
+msgstr "Evento"
+
+#: src/Form/WorkflowEventAddForm.php:85
+msgid "Event selection"
+msgstr "Selección de eventos"
+
+#: config/schema/social_automation.schema.yml:0
+#: src/Form/WorkflowEventEditForm.php:83
+msgid "Events"
+msgstr "Eventos"
+
+#: src/Context/ContextHandlerIntegrityTrait.php:143
+msgid ""
+"Expected a @expected_type data type for context %context_name but got a "
+"@provided_type data type instead."
+msgstr ""
+"Se esperaba un tipo de datos @expected_type para el contexto %context_name "
+"pero en su lugar se ha obtenido un tipo de datos @provided_type."
+
+#: social_automation.drush.inc:95
+msgid "Exports a Workflow event in YAML format."
+msgstr "Exporta un evento de flujo de trabajo en formato YAML."
+
+#: social_automation.drush.inc:164
+msgid "Exports a workflowevent."
+msgstr "Exporta un evento de flujo de trabajo."
+
+#: social_automation.drush.inc:102
+msgid "Exports all Automation Components into individual YAML files."
+msgstr ""
+"Exporta todos los componentes de automatización en archivos YAML "
+"individuales."
+
+#: social_automation.drush.inc:101
+msgid ""
+"Exports the Workflow event with machine name \"test_workflowevent\" and "
+"saves it in a .yml file."
+msgstr ""
+"Exporta el evento Workflow con nombre de máquina \"test_workflowevent\" y lo "
+"guarda en un archivo .yml."
+
+#: config/schema/social_automation.data_types.schema.yml:0
+#: config/schema/social_automation.schema.yml:0
+msgid "Expression configuration"
+msgstr "Configuración de expresiones"
+
+#: src/Plugin/Condition/EntityHasField.php:8
+msgid "Field"
+msgstr "Campo"
+
+#: src/Controller/AutomationComponentListBuilder.php:138
+#: src/Controller/AutomationReactionListBuilder.php:170
+msgid "Filter"
+msgstr "Filtro"
+
+#: src/Controller/AutomationComponentListBuilder.php:141
+msgid "Filter by component name, machine name, description, or tag"
+msgstr ""
+"Filtrar por nombre de componente, nombre de máquina, descripción o etiqueta"
+
+#: src/Controller/AutomationReactionListBuilder.php:173
+msgid "Filter by workflowevent name, machine name, event, description, or tag"
+msgstr ""
+"Filtrar por nombre de evento de flujo de trabajo, nombre de máquina, evento, "
+"descripción o etiqueta"
+
+#: src/EventSubscriber/GenericEventSubscriber.php:237
+msgid "Finished reacting on event %label."
+msgstr "Finalizada la reacción al evento %label."
+
+#: social_automation.module:90
+msgid "General settings"
+msgstr "Ajustes generales"
+
+#: config/schema/social_automation.schema.yml:0;0
+msgid "ID"
+msgstr "ID"
+
+#: src/Form/Expression/ConditionForm.php:141
+msgid ""
+"If checked, the condition result is negated such that it returns TRUE if it "
+"evaluates to FALSE."
+msgstr ""
+"Si se comprueba, el resultado de la condición se niega de forma que devuelve "
+"TRUE si se evalúa como FALSE."
+
+#: src/Plugin/AutomationAction/SystemMessage.php:12
+msgid ""
+"If disabled and the message has been already shown, then the message won't "
+"be repeated."
+msgstr "Si está desactivado y el mensaje ya se ha mostrado, no se repetirá."
+
+#: src/Plugin/AutomationAction/SystemEmailToUsersOfRole.php:13
+msgid ""
+"If specified, the language object (not language code) used for getting the "
+"email message and subject."
+msgstr ""
+"Si se especifica, el objeto de idioma (no el código de idioma) utilizado "
+"para obtener el mensaje de correo electrónico y el asunto."
+
+#: src/Plugin/AutomationAction/SystemSendEmail.php:12
+msgid ""
+"If specified, the language used for getting the email message and subject."
+msgstr ""
+"Si se especifica, el idioma utilizado para obtener el mensaje de correo "
+"electrónico y el asunto."
+
+#: src/Form/WorkflowEventAddForm.php:140
+msgid ""
+"If you need to filter for multiple values, either add multiple events or use "
+"the \"Entity is of bundle\" condition. These options are available after "
+"saving this form."
+msgstr ""
+"Si necesita filtrar varios valores, añada varios eventos o utilice la "
+"condición \"La entidad es del paquete\". Estas opciones están disponibles "
+"después de guardar este formulario."
+
+#: social_automation.drush.inc:48
+#: config/schema/social_automation.context.schema.yml:0
+#: config/schema/social_automation.schema.yml:0;0
+#: src/Form/AutomationComponentFormBase.php:54
+msgid "Label"
+msgstr "Etiqueta"
+
+#: src/Plugin/AutomationAction/SystemEmailToUsersOfRole.php:13
+#: src/Plugin/AutomationAction/SystemSendEmail.php:12
+msgid "Language"
+msgstr "Idioma"
+
+#: src/Form/AutomationSettingsForm.php:88
+msgid "Level of debug log messages shown on screen"
+msgstr "Nivel de los mensajes de registro de depuración mostrados en pantalla"
+
+#: src/Plugin/AutomationExpression/LoopExpression.php:80
+msgid "List item name %name conflicts with an existing variable."
+msgstr ""
+"El nombre de elemento de lista %name entra en conflicto con una variable "
+"existente."
+
+#: src/Form/Expression/ActionContainerForm.php:42
+#: src/Form/Expression/ConditionContainerForm.php:42
+msgid "List position"
+msgstr "Posición en la lista"
+
+#: src/Plugin/AutomationExpression/LoopExpression.php:71
+msgid "List variable %list does not exist. @message"
+msgstr "La variable de lista %list no existe. @message"
+
+#: src/Plugin/AutomationExpression/LoopExpression.php:63
+msgid "List variable is missing."
+msgstr "Falta la variable de lista."
+
+#: social_automation.drush.inc:28
+msgid "Lists all the active and inactive automation for your site."
+msgstr "Lista todas las automatizaciones activas e inactivas de su sitio."
+
+#: social_automation.drush.inc:142
+msgid "Lists all the automation on your site."
+msgstr "Lista todos los automatismos de su sitio."
+
+#: social_automation.drush.inc:38
+msgid "Lists both Reaction Automation and Automation Components."
+msgstr ""
+"Enumera tanto la Automatización de la Reacción como los Componentes de "
+"Automatización."
+
+#: social_automation.drush.inc:40
+msgid "Lists just the machine names."
+msgstr "Enumera sólo los nombres de las máquinas."
+
+#: social_automation.drush.inc:39
+msgid "Lists only Automation Components."
+msgstr "Enumera sólo los componentes de automatización."
+
+#: src/Form/AutomationSettingsForm.php:43
+msgid "Log all warnings and errors"
+msgstr "Registrar todas las advertencias y errores"
+
+#: src/Form/AutomationSettingsForm.php:44;85
+msgid "Log errors only"
+msgstr "Registrar sólo errores"
+
+#: src/Form/AutomationSettingsForm.php:83
+msgid "Log everything"
+msgstr "Regístralo todo"
+
+#: src/Form/AutomationSettingsForm.php:84
+msgid "Log warnings and errors only"
+msgstr "Registrar sólo advertencias y errores"
+
+#: src/Plugin/AutomationExpression/LoopExpression.php:12
+msgid "Loop"
+msgstr "Bucle"
+
+#: src/Plugin/AutomationExpression/LoopExpression.php:39
+msgid "Looping over the list items of %selector."
+msgstr "Recorrer en bucle los elementos de la lista de %selector."
+
+#: src/Controller/AutomationComponentListBuilder.php:79
+#: src/Controller/AutomationReactionListBuilder.php:106
+#: src/Form/WorkflowEventEditForm.php:93
+msgid "Machine name: @name"
+msgstr "Nombre de la máquina: @name"
+
+#: src/Plugin/AutomationAction/SystemEmailToUsersOfRole.php:13
+#: src/Plugin/AutomationAction/SystemMessage.php:12
+#: src/Plugin/AutomationAction/SystemSendEmail.php:12
+msgid "Message"
+msgstr "Mensaje"
+
+#: config/schema/social_automation.action.schema.yml:0
+msgid "Message action context values"
+msgstr "Valores de contexto de la acción de mensaje"
+
+#: src/Plugin/AutomationAction/SystemMessage.php:12
+msgid "Message type"
+msgstr "Tipo de mensaje"
+
+#: src/Core/Annotation/Condition.php:17
+msgid "My User is blocked"
+msgstr "Mi usuario está bloqueado"
+
+#: src/Plugin/AutomationExpression/ConditionExpression.php:162
+msgid "NOT"
+msgstr "NO"
+
+#: config/schema/social_automation.schema.yml:0
+msgid "Name"
+msgstr "Nombre"
+
+#: config/schema/social_automation.expression.schema.yml:0;0
+#: src/Form/Expression/ConditionForm.php:134
+msgid "Negate"
+msgstr "Negar"
+
+#: src/Form/Expression/ConditionForm.php:139
+msgid "Negate this condition"
+msgstr "Negar esta condición"
+
+#: config/schema/social_automation.expression.schema.yml:0
+msgid "Negated"
+msgstr "Negado"
+
+#: src/Controller/AutomationComponentListBuilder.php:151
+msgid "No automation components have been defined."
+msgstr "No se han definido componentes de automatización."
+
+#: src/Plugin/AutomationTrigger/EventHasPassed.php:8
+msgid "Node"
+msgstr "Nodo"
+
+#: src/Form/WorkflowEventEditForm.php:84
+#: src/Form/Expression/ActionContainerForm.php:53
+#: src/Form/Expression/ConditionContainerForm.php:53
+msgid "None"
+msgstr "Ninguno"
+
+#: src/Form/WorkflowEventEditForm.php:83
+#: src/Form/Expression/ActionContainerForm.php:40
+#: src/Form/Expression/ConditionContainerForm.php:40
+msgid "Operations"
+msgstr "Operaciones"
+
+#: src/Core/ConditionManager.php:48 src/Form/Expression/ConditionForm.php:61
+msgid "Other"
+msgstr "Otros"
+
+#: social_automation.drush.inc:41
+msgid "Outputs machine names in a format suitable for piping."
+msgstr ""
+"Da salida a los nombres de las máquinas en un formato adecuado para la "
+"canalización."
+
+#: src/Form/Expression/ExpressionContainerFormBase.php:59
+msgid "Parameters: <none>"
+msgstr "Parámetros: <ninguno>"
+
+#: src/Form/Expression/ExpressionContainerFormBase.php:62
+msgid "Parameters: @name-value"
+msgstr "Parámetros: @name-value"
+
+#: social_automation.drush.inc:91
+msgid ""
+"Permanently deletes the workflowevent with machine name \"test_workflowevent"
+"\"."
+msgstr ""
+"Elimina permanentemente el workflowevent con nombre de máquina "
+"\"test_workflowevent\"."
+
+#: src/Plugin/AutomationDataProcessor/TokenProcessor.php:12
+msgid "Placeholder token replacements"
+msgstr "Sustitución de marcadores de posición"
+
+#: config/schema/social_automation.expression.schema.yml:0
+msgid "Plugin ID"
+msgstr "ID de extensión"
+
+#: config/schema/social_automation.data_types.schema.yml:0
+msgid "Provided context definitions"
+msgstr "Definiciones contextuales facilitadas"
+
+#: config/schema/social_automation.expression.schema.yml:0;0
+msgid "Provided context mapping"
+msgstr "Mapa de contexto proporcionado"
+
+#: src/Context/ContextHandlerIntegrityTrait.php:106
+msgid "Provided variable name %name contains not allowed characters."
+msgstr "El nombre de variable %name contiene caracteres no permitidos."
+
+#: src/Form/Expression/ActionForm.php:111
+#: src/Form/Expression/ConditionForm.php:123
+msgid "Provided variables"
+msgstr "Variables proporcionadas"
+
+#: src/Form/WorkflowEventAddForm.php:97
+msgid "React on event"
+msgstr "Reaccionar ante un acontecimiento"
+
+#: social_automation.info.yml:0
+msgid "React on events and conditionally evaluate actions."
+msgstr "Reaccionar ante eventos y evaluar acciones condicionalmente."
+
+#: src/EventSubscriber/GenericEventSubscriber.php:227
+msgid "Reacting on event %label."
+msgstr "Reaccionando al evento %label."
+
+#: src/Entity/WorkflowEventConfig.php:11
+msgid "Reaction Automation"
+msgstr "Automatización de reacciones"
+
+#: social_automation.module:86
+msgid "Reaction automation"
+msgstr "Automatización de reacciones"
+
+#: social_automation.module:87
+msgid ""
+"Reaction automation associate one or more reactions to one or more specific "
+"site events. Execution of a workflow event actions can optionally be tied to "
+"one or more conditions. To list and update existing reaction automation and "
+"to create a new one, visit the <a href=\":url\">reaction automation overview "
+"page</a>."
+msgstr ""
+"La automatización de reacciones asocia una o más reacciones a uno o más "
+"eventos específicos del sitio. La ejecución de las acciones de un evento de "
+"flujo de trabajo puede vincularse opcionalmente a una o más condiciones. "
+"Para listar y actualizar las automatizaciones de reacción existentes y para "
+"crear una nueva, visite la página de resumen de automatizaciones de reacción "
+"<a href=\":url\"></a> ."
+
+#: src/Controller/AutomationReactionListBuilder.php:147
+msgid ""
+"Reaction automation, listed below, react on selected events on the site. "
+"Each workflow event may fire any number of <em>actions</em>, and may have "
+"any number of <em>conditions</em> that must be met for the actions to be "
+"executed. You can also set up <a href=\":components\">components</a> – stand-"
+"alone sets of Automation configuration that can be used in Automation and "
+"other parts of your site. See <a href=\":documentation\">the online "
+"documentation</a> for an introduction on how to use social_automation."
+msgstr ""
+"Las automatizaciones de reacción, listadas a continuación, reaccionan a "
+"eventos seleccionados en el sitio. Cada evento de flujo de trabajo puede "
+"disparar cualquier número de acciones <em></em> , y puede tener cualquier "
+"número de condiciones <em></em> que deben cumplirse para que las acciones se "
+"ejecuten. También puede configurar componentes <a href=\":components\"></a> -"
+" conjuntos independientes de configuración de Automatización que pueden "
+"utilizarse en Automatización y en otras partes de su sitio. Consulte <a href="
+"\":documentation\">la documentación en línea</a> para obtener una "
+"introducción sobre cómo utilizar social_automation."
+
+#: src/Plugin/AutomationAction/SystemMessage.php:12
+msgid "Repeat message"
+msgstr "Repetir mensaje"
+
+#: src/Plugin/AutomationAction/SystemEmailToUsersOfRole.php:13
+#: src/Plugin/AutomationAction/SystemSendEmail.php:12
+msgid "Reply to"
+msgstr "Responder a"
+
+#: src/Form/WorkflowEventAddForm.php:136
+msgid "Restrict by type"
+msgstr "Restringir por tipo"
+
+#: social_automation.drush.inc:33
+msgid ""
+"Restricts output to either \"workflowevent\" or \"component\". Default is to "
+"list both."
+msgstr ""
+"Restringe la salida a \"workflowevent\" o \"component\". Por defecto se "
+"listan ambos."
+
+#: src/Plugin/AutomationAction/SystemEmailToUsersOfRole.php:13
+msgid "Roles"
+msgstr "Roles"
+
+#: src/Form/AutomationComponentAddForm.php:36
+#: src/Form/AutomationComponentEditForm.php:64
+#: src/Form/WorkflowEventAddForm.php:66 src/Form/WorkflowEventEditForm.php:133
+#: src/Form/Expression/ActionForm.php:122
+#: src/Form/Expression/ConditionForm.php:146
+msgid "Save"
+msgstr "Guardar"
+
+#: src/Plugin/AutomationAction/SystemSendEmail.php:12
+msgid "Send email"
+msgstr "Enviar correo electrónico"
+
+#: config/schema/social_automation.action.schema.yml:0
+msgid "Send email action context values"
+msgstr "Valores contextuales de la acción Enviar correo electrónico"
+
+#: src/Plugin/AutomationAction/SystemEmailToUsersOfRole.php:13
+msgid "Send email to all users of a role"
+msgstr "Enviar correo electrónico a todos los usuarios de un rol"
+
+#: src/Plugin/AutomationAction/SystemSendEmail.php:12
+msgid "Send to"
+msgstr "Enviar a"
+
+#: social_automation.links.task.yml:0
+#: src/Form/AutomationComponentFormBase.php:47
+#: src/Form/AutomationSettingsForm.php:63
+msgid "Settings"
+msgstr "Configuración"
+
+#: src/Plugin/AutomationAction/SystemMessage.php:12
+msgid "Show a message on the site"
+msgstr "Mostrar un mensaje en el sitio"
+
+#: src/Form/AutomationSettingsForm.php:56
+msgid ""
+"Show debug information on screen (in the HTML response). Debug information "
+"is only shown when automation are evaluated, and is visible for users having "
+"the permission %permission."
+msgstr ""
+"Mostrar información de depuración en pantalla (en la respuesta HTML). La "
+"información de depuración sólo se muestra cuando se evalúa la "
+"automatización, y es visible para los usuarios que tienen el permiso "
+"%permission."
+
+#: src/ContextProvider/SiteContext.php:55 src/Plugin/DataType/Site.php:8;8
+msgid "Site information"
+msgstr "Información del sitio"
+
+#: social_automation.info.yml:0
+msgid "Social"
+msgstr "Social"
+
+#: social_automation.info.yml:0
+msgid "Social Automation"
+msgstr "Automatización social"
+
+#: src/Plugin/AutomationTrigger/UserCreatesBook.php:7
+#: src/Plugin/AutomationTrigger/UserCreatesComment.php:7
+#: src/Plugin/AutomationTrigger/UserCreatesEvent.php:7
+#: src/Plugin/AutomationTrigger/UserCreatesLike.php:7
+#: src/Plugin/AutomationTrigger/UserCreatesPage.php:7
+#: src/Plugin/AutomationTrigger/UserCreatesPost.php:7
+#: src/Plugin/AutomationTrigger/UserCreatesTopic.php:7
+#: src/Plugin/AutomationTrigger/UserDownloadsFile.php:7
+#: src/Plugin/AutomationTrigger/UserEnrollsInEvent.php:7
+#: src/Plugin/AutomationTrigger/UserFollowsContent.php:7
+#: src/Plugin/AutomationTrigger/UserJoinsGroup.php:7
+#: src/Plugin/AutomationTrigger/UserLeavesGroup.php:7
+#: src/Plugin/AutomationTrigger/UserRequestToJoinEvent.php:7
+#: src/Plugin/AutomationTrigger/UserRequestToJoinGroup.php:7
+#: src/Plugin/Condition/EntityHasField.php:8
+#: src/Plugin/Condition/EntityIsOfBundle.php:8
+#: src/Plugin/Condition/EntityIsOfType.php:8
+msgid "Specifies the entity for which to evaluate the condition."
+msgstr "Especifica la entidad cuya condición debe evaluarse."
+
+#: src/Plugin/AutomationTrigger/UserLogin.php:7
+msgid "Specifies the user for which to evaluate the condition."
+msgstr "Especifica el usuario para el que se evaluará la condición."
+
+#: src/Plugin/AutomationAction/SystemEmailToUsersOfRole.php:13
+#: src/Plugin/AutomationAction/SystemSendEmail.php:12
+msgid "Subject"
+msgstr "Asunto"
+
+#: src/Plugin/AutomationAction/SystemEmailToUsersOfRole.php:159
+msgid ""
+"Successfully sent email to %number out of %count users having the role(s) "
+"%roles"
+msgstr ""
+"Enviado con éxito el correo electrónico a %number de %count usuarios que "
+"tienen el rol(s) %roles"
+
+#: src/Plugin/AutomationAction/SystemSendEmail.php:126
+msgid "Successfully sent email to %recipient"
+msgstr "Email enviado con éxito a %recipient"
+
+#: src/Form/Expression/ActionForm.php:86
+#: src/Form/Expression/ConditionForm.php:98
+msgid "Summary"
+msgstr "Resumen"
+
+#: src/Context/Form/ContextFormTrait.php:89
+msgid "Switch to data selection"
+msgstr "Pasar a la selección de datos"
+
+#: src/Context/Form/ContextFormTrait.php:89
+msgid "Switch to the direct input mode"
+msgstr "Cambiar al modo de entrada directa"
+
+#: src/Plugin/AutomationAction/SystemEmailToUsersOfRole.php:13
+#: src/Plugin/AutomationAction/SystemMessage.php:12
+#: src/Plugin/AutomationAction/SystemSendEmail.php:12
+msgid "System"
+msgstr "Sistema"
+
+#: config/schema/social_automation.schema.yml:0
+#: src/Form/AutomationSettingsForm.php:37
+msgid "System logging"
+msgstr "Registro del sistema"
+
+#: config/schema/social_automation.schema.yml:0;0
+msgid "Tag"
+msgstr "Etiqueta"
+
+#: config/schema/social_automation.schema.yml:0;0
+#: src/Form/AutomationComponentFormBase.php:75
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: src/Controller/AutomationComponentListBuilder.php:81
+#: src/Controller/AutomationReactionListBuilder.php:108
+msgid "Tags: @tags"
+msgstr "Etiquetas: @tags"
+
+#: social_automation.module:79
+msgid ""
+"The Automation module allows site administrators to define conditionally "
+"executed actions based on occurring events (ECA-automation). For more "
+"information, see the <a href=\":url1\" target=\"_blank\">online "
+"documentation for the Automation module</a> and the current <a href=\":"
+"url2\" target=\"_blank\">Automation documentation for Drupal 8 on Gitbooks</"
+"a>."
+msgstr ""
+"El módulo Automatización permite a los administradores del sitio definir "
+"acciones ejecutadas condicionalmente en función de los eventos que se "
+"produzcan (ECA-automatización). Para obtener más información, consulte la "
+"documentación en línea <a href=\":url1\" target=\"_blank\">para el módulo de "
+"Automatización</a> y la documentación actual <a href=\":url2\" target="
+"\"_blank\">Automatización para Drupal 8 en Gitbooks</a>."
+
+#: social_automation.module:91
+msgid ""
+"The Automation modules allows to set global settings settings, such as "
+"logging. Visit the <a href=\":url\">automation settings page</a> to view and "
+"update current settings."
+msgstr ""
+"Los módulos de Automatización permiten establecer ajustes globales, como el "
+"registro. Visite la página de ajustes de automatización <a href=\":url\"></"
+"a> para ver y actualizar los ajustes actuales."
+
+#: src/Plugin/Condition/EntityIsOfBundle.php:8
+msgid "The bundle of the evaluated entity."
+msgstr "El paquete de la entidad evaluada."
+
+#: src/Plugin/AutomationExpression/ConditionExpression.php:126
+msgid "The condition %name evaluated to %bool."
+msgstr "La condición %name evaluada a %bool."
+
+#: src/Context/ContextHandlerIntegrityTrait.php:66
+msgid "The context %context_name may not be configured using a selector."
+msgstr "El contexto %context_name no puede configurarse mediante un selector."
+
+#: src/Context/ContextHandlerIntegrityTrait.php:79
+msgid "The context %context_name may only be configured using a selector."
+msgstr "El contexto %context_name sólo puede configurarse mediante un selector."
+
+#: src/Context/Form/ContextFormTrait.php:66
+msgid ""
+"The data selector helps you drill down into the available data. <em>To make "
+"entity fields appear in the data selector, you may have to use the condition "
+"'entity has field' (or 'content is of type').</em> More useful tips about "
+"data selection is available in <a href=':url'>the online documentation</a>."
+msgstr ""
+"El selector de datos le ayuda a desglosar los datos disponibles. <em>Para "
+"que los campos de entidad aparezcan en el selector de datos, es posible que "
+"tenga que utilizar la condición \"la entidad tiene campo\" (o \"el contenido "
+"es de tipo\").</em> Encontrará más consejos útiles sobre la selección de "
+"datos en <a href=':url'>la documentación en línea</a>."
+
+#: src/Plugin/AutomationExpression/LoopExpression.php:87
+msgid "The data type of list variable %list is not a list."
+msgstr "El tipo de datos de la variable de lista %list no es una lista."
+
+#: src/Plugin/AutomationAction/SystemEmailToUsersOfRole.php:13
+#: src/Plugin/AutomationAction/SystemSendEmail.php:12
+msgid ""
+"The email's message body. Drupal will by default remove all HTML tags. If "
+"you want to use HTML you must override this behavior by installing a "
+"contributed module such as Mime Mail."
+msgstr ""
+"El cuerpo del mensaje de correo electrónico. Drupal eliminará por defecto "
+"todas las etiquetas HTML. Si desea utilizar HTML debe anular este "
+"comportamiento mediante la instalación de un módulo contribuido como Mime "
+"Mail."
+
+#: src/Plugin/AutomationAction/SystemEmailToUsersOfRole.php:13
+#: src/Plugin/AutomationAction/SystemSendEmail.php:12
+msgid ""
+"The email's reply-to address. Leave it empty to use the site-wide configured "
+"address."
+msgstr ""
+"Dirección de respuesta del correo electrónico. Déjelo vacío para utilizar la "
+"dirección configurada para todo el sitio."
+
+#: src/Plugin/AutomationAction/SystemEmailToUsersOfRole.php:13
+#: src/Plugin/AutomationAction/SystemSendEmail.php:12
+msgid "The email's subject."
+msgstr "El asunto del correo electrónico."
+
+#: src/Plugin/Condition/EntityIsOfType.php:8
+msgid "The entity type specified by the condition."
+msgstr "El tipo de entidad especificado por la condición."
+
+#: src/Form/BreakLockForm.php:117
+msgid "The lock has been broken and you may now edit this @component_type."
+msgstr "Se ha roto el bloqueo y ya puede editar este @component_type."
+
+#: src/Form/AutomationComponentFormBase.php:68
+msgid ""
+"The machine-readable name must be unique, and can only contain lowercase "
+"letters, numbers, and underscores. Additionally, it can not be the reserved "
+"word \"custom\"."
+msgstr ""
+"El nombre legible por máquna debe ser único, y sólo puede contener letras "
+"minúsculas, números y subrayados. Además no puede ser la palabra reservada "
+"\"custom\"."
+
+#: src/Plugin/AutomationAction/SystemMessage.php:12
+msgid "The message type: status, warning, or error."
+msgstr "El tipo de mensaje: estado, advertencia o error."
+
+#: src/Plugin/Condition/EntityHasField.php:8
+msgid "The name of the field to check for."
+msgstr "El nombre del campo a comprobar."
+
+#: src/Context/ContextHandlerIntegrityTrait.php:89
+msgid "The required context %context_name is missing."
+msgstr "Falta el contexto requerido %context_name."
+
+#: src/Plugin/AutomationAction/SystemEmailToUsersOfRole.php:13
+msgid "The roles to which to send the email."
+msgstr "Las funciones a las que se enviará el correo electrónico."
+
+#: src/Plugin/AutomationAction/SystemMessage.php:12
+msgid "The text to display. HTML is allowed."
+msgstr "El texto a mostrar. Se permite HTML."
+
+#: src/Plugin/Condition/EntityIsOfBundle.php:8
+msgid "The type of the evaluated entity."
+msgstr "Tipo de la entidad evaluada."
+
+#: src/Context/Form/ContextFormTrait.php:124
+msgid ""
+"The variable name must contain only lowercase letters, numbers, and "
+"underscores and must be unique in the current scope."
+msgstr ""
+"El nombre de la variable debe contener sólo letras minúsculas, números y "
+"guiones bajos y debe ser único en el ámbito actual."
+
+#: src/Controller/AutomationReactionController.php:50;47
+msgid "The workflow event %label has been disabled."
+msgstr "El evento de flujo de trabajo %label ha sido desactivado."
+
+#: src/Controller/AutomationReactionController.php:28;25
+msgid "The workflow event %label has been enabled."
+msgstr "El evento de flujo de trabajo %label ha sido activado."
+
+#: social_automation.drush.inc:292
+msgid "The workflowevent \"@name\" has been deleted."
+msgstr "El evento de flujo de trabajo \"@name\" ha sido eliminado."
+
+#: social_automation.drush.inc:268
+msgid "The workflowevent \"@name\" has been disabled."
+msgstr "El evento de flujo de trabajo \"@name\" ha sido desactivado."
+
+#: social_automation.drush.inc:246
+msgid "The workflowevent \"@name\" has been enabled."
+msgstr "Se ha activado el evento de flujo de trabajo \"@name\"."
+
+#: social_automation.drush.inc:313
+msgid "The workflowevent \"@name\" has been exported."
+msgstr "El evento de flujo de trabajo \"@name\" ha sido exportado."
+
+#: src/Commands/AutomationCommands.php:309
+msgid ""
+"The workflowevent \"@name\" has not been overridden and can't be reverted."
+msgstr ""
+"El evento de flujo de trabajo \"@name\" no se ha anulado y no se puede "
+"revertir."
+
+#: social_automation.drush.inc:271
+msgid "The workflowevent \"@name\" is already disabled."
+msgstr "El evento de flujo de trabajo \"@name\" ya está desactivado."
+
+#: social_automation.drush.inc:249
+msgid "The workflowevent \"@name\" is already enabled."
+msgstr "El evento de flujo de trabajo \"@name\" ya está activado."
+
+#: src/Commands/AutomationCommands.php:236
+msgid "The workflowevent @name has been deleted."
+msgstr "El evento de flujo de trabajo @name ha sido eliminado."
+
+#: src/Commands/AutomationCommands.php:199
+msgid "The workflowevent @name has been disabled."
+msgstr "El @name del evento de flujo de trabajo ha sido desactivado."
+
+#: src/Commands/AutomationCommands.php:166
+msgid "The workflowevent @name has been enabled."
+msgstr "El @name del evento de flujo de trabajo ha sido habilitado."
+
+#: src/Commands/AutomationCommands.php:271
+msgid "The workflowevent @name has been exported."
+msgstr "Se ha exportado el @name del evento de flujo de trabajo."
+
+#: src/Commands/AutomationCommands.php:305
+msgid "The workflowevent @name has been reverted to its default state."
+msgstr ""
+"El @name del evento de flujo de trabajo se ha revertido a su estado por "
+"defecto."
+
+#: src/Commands/AutomationCommands.php:202
+msgid "The workflowevent @name is already disabled"
+msgstr "El evento de flujo de trabajo @name ya está desactivado"
+
+#: src/Commands/AutomationCommands.php:169
+msgid "The workflowevent @name is already enabled"
+msgstr "El evento de flujo de trabajo @name ya está habilitado"
+
+#: src/Controller/AutomationReactionListBuilder.php:217
+msgid "There are no disabled @label."
+msgstr "No hay @label desactivadas."
+
+#: src/Controller/AutomationReactionListBuilder.php:214
+msgid "There are no enabled @label."
+msgstr "No hay @label habilitadas."
+
+#: src/Form/BreakLockForm.php:105
+msgid "There is no lock on %label to break."
+msgstr "No hay ningún bloqueo en %label que romper."
+
+#: src/Ui/TempStoreTrait.php:303
+msgid ""
+"This @component_type is being edited by user @user, and is therefore locked "
+"from editing by others. This lock is @age old. Click here to <a href=\":url"
+"\">break this lock</a>."
+msgstr ""
+"Este @component_type está siendo editado por el usuario @user, y por lo "
+"tanto está bloqueado para que no pueda ser editado por otros. Este bloqueo "
+"es @age. Haga clic aquí para <a href=\":url\">romper este bloqueo</a>."
+
+#: config/schema/social_automation.context.schema.yml:0
+#: src/Controller/AutomationComponentListBuilder.php:65
+#: src/Plugin/Condition/EntityIsOfBundle.php:8
+#: src/Plugin/Condition/EntityIsOfType.php:8
+msgid "Type"
+msgstr "Tipo"
+
+#: config/schema/social_automation.expression.schema.yml:0
+msgid "UUID"
+msgstr "UUID"
+
+#: src/Plugin/AutomationEvent/EntityPresaveDeriver.php:70
+#: src/Plugin/AutomationEvent/EntityUpdateDeriver.php:70
+msgid "Unchanged @entity_type"
+msgstr "Sin cambios @entity_type"
+
+#: src/Core/Annotation/Condition.php:17;17
+#: src/Plugin/AutomationTrigger/UserHasNotLoggedInForWeeks.php:7
+#: src/Plugin/AutomationTrigger/UserLogin.php:7
+msgid "User"
+msgstr "Usuario"
+
+#: social_automation.module:84
+msgid "Uses"
+msgstr "Usos"
+
+#: src/Context/Form/ContextFormTrait.php:45
+msgid "Value"
+msgstr "Valor"
+
+#: src/Context/Form/ContextFormTrait.php:123
+msgid "Variable name"
+msgstr "Nombre de la variable"
+
+#: social_automation.permissions.yml:0
+msgid "View Automation debug log"
+msgstr "Ver el registro de depuración de automatización"
+
+#: config/schema/social_automation.expression.schema.yml:0
+msgid "Weight"
+msgstr "Peso"
+
+#: social_automation.drush.inc:47
+#: config/schema/social_automation.expression.schema.yml:0
+#: config/schema/social_automation.schema.yml:0
+#: src/Controller/AutomationReactionListBuilder.php:87
+#: src/Entity/WorkflowEventConfig.php:11
+#: src/Plugin/AutomationExpression/AutomationExpression.php:21
+msgid "Workflow event"
+msgstr "Evento de flujo de trabajo"
+
+#: src/Plugin/AutomationExpression/AutomationExpression.php:116
+msgid "Workflow event %label fires."
+msgstr "Se dispara el evento de flujo de trabajo %label."
+
+#: src/Form/WorkflowEventAddForm.php:193
+msgid "Workflow event %label has been created."
+msgstr "Se ha creado el evento de flujo de trabajo %label."
+
+#: src/Form/WorkflowEventEditForm.php:157
+msgid "Workflow event %label has been updated."
+msgstr "El evento %label ha sido actualizado."
+
+#: src/Plugin/AutomationExpression/AutomationExpression.php:122
+msgid "Workflow event %label has fired."
+msgstr "El evento de flujo de trabajo %label se ha disparado."
+
+#: src/Form/AutomationComponentEditForm.php:88
+msgid "Workflow event component %label has been updated."
+msgstr ""
+"El componente de eventos de flujo de trabajo %label ha sido actualizado."
+
+#: social_automation.module:89
+msgid ""
+"Workflow event components allows to define reusable combined actions which "
+"can optionally be tied to one or more conditions. Components are usable as "
+"actions in reaction automation or in other components. To list and update "
+"existing workflowevent components and to create a new one, visit the <a href="
+"\":url\">components overview pages</a>."
+msgstr ""
+"Los componentes de eventos de flujo de trabajo permiten definir acciones "
+"combinadas reutilizables que, opcionalmente, pueden vincularse a una o más "
+"condiciones. Los componentes pueden utilizarse como acciones en la "
+"automatización de reacciones o en otros componentes. Para listar y "
+"actualizar los componentes de eventos de flujo de trabajo existentes y para "
+"crear uno nuevo, visite las páginas de resumen de componentes <a href=\":"
+"url\"></a> ."
+
+#: src/Form/WorkflowEventAddForm.php:99
+msgid ""
+"Workflow event evaluation is triggered whenever the selected event occurs."
+msgstr ""
+"La evaluación de eventos del flujo de trabajo se activa siempre que se "
+"produce el evento seleccionado."
+
+#: social_automation.drush.inc:85
+msgid "Workflow event name (machine id) to delete."
+msgstr "Nombre del evento de flujo de trabajo (id de máquina) a eliminar."
+
+#: social_automation.drush.inc:73
+msgid "Workflow event name (machine id) to disable."
+msgstr "Nombre del evento de flujo de trabajo (id de máquina) a deshabilitar."
+
+#: social_automation.drush.inc:60
+msgid "Workflow event name (machine id) to enable."
+msgstr "Nombre del evento de flujo de trabajo (id de máquina) a habilitar."
+
+#: social_automation.drush.inc:97
+msgid "Workflow event name (machine id) to export."
+msgstr "Nombre del evento de flujo de trabajo (id de máquina) a exportar."
+
+#: social_automation.links.menu.yml:0 social_automation.links.task.yml:0
+msgid "Workflow events"
+msgstr "Eventos de flujo de trabajo"
+
+#: social_automation.links.menu.yml:0
+msgid "Workflow events administration overview."
+msgstr "Visión general de la administración de eventos de flujo de trabajo."
+
+#: src/Form/AutomationSettingsForm.php:74
+msgid ""
+"Write a copy of the debug information to the system database log. This will "
+"be visible for users having the permission %permission."
+msgstr ""
+"Escribe una copia de la información de depuración en el registro de la base "
+"de datos del sistema. Esto será visible para los usuarios que tengan el "
+"permiso %permission."
+
+#: src/Ui/TempStoreTrait.php:264
+msgid "You have unsaved changes."
+msgstr "Hay cambios sin guardar."
+
+#: src/Entity/WorkflowComponentConfig.php:12
+msgid "automation component"
+msgstr "componente de automatización"
+
+#: src/Entity/WorkflowComponentConfig.php:12
+msgid "automation components"
+msgstr "componentes de automatización"
+
+#: src/Logger/AutomationDebugLog.php:167;184
+msgid "edit"
+msgstr "editar"
+
+#: src/Entity/WorkflowEventConfig.php:11
+msgid "reaction automation"
+msgstr "automatización de reacciones"
+
+#: src/Entity/WorkflowEventConfig.php:11
+msgid "workflow event"
+msgstr "evento de flujo de trabajo"

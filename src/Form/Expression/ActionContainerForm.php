@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\rules\Form\Expression;
+namespace Drupal\social_automation\Form\Expression;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\rules\Engine\ActionExpressionContainerInterface;
+use Drupal\social_automation\Engine\ActionExpressionContainerInterface;
 
 /**
  * Form handler for action containers.
@@ -11,9 +11,9 @@ use Drupal\rules\Engine\ActionExpressionContainerInterface;
 class ActionContainerForm extends ExpressionContainerFormBase {
 
   /**
-   * The rule expression object this form is for.
+   * The workflowevent expression object this form is for.
    *
-   * @var \Drupal\rules\Engine\ActionExpressionContainerInterface
+   * @var \Drupal\social_automation\Engine\ActionExpressionContainerInterface
    */
   protected $actionSet;
 
@@ -53,7 +53,7 @@ class ActionContainerForm extends ExpressionContainerFormBase {
       '#empty' => $this->t('None'),
     ];
 
-    /** @var \Drupal\rules\Engine\ExpressionInterface $action */
+    /** @var \Drupal\social_automation\Engine\ExpressionInterface $action */
     foreach ($this->actionSet as $action) {
       $uuid = $action->getUuid();
       $configuration = $action->getConfiguration();
@@ -74,13 +74,13 @@ class ActionContainerForm extends ExpressionContainerFormBase {
             '#links' => [
               'edit' => [
                 'title' => $this->t('Edit'),
-                'url' => $this->getRulesUiHandler()->getUrlFromRoute('expression.edit', [
+                'url' => $this->getAutomationUiHandler()->getUrlFromRoute('expression.edit', [
                   'uuid' => $uuid,
                 ]),
               ],
               'delete' => [
                 'title' => $this->t('Delete'),
-                'url' => $this->getRulesUiHandler()->getUrlFromRoute('expression.delete', [
+                'url' => $this->getAutomationUiHandler()->getUrlFromRoute('expression.delete', [
                   'uuid' => $uuid,
                 ]),
               ],
@@ -103,8 +103,8 @@ class ActionContainerForm extends ExpressionContainerFormBase {
       '#theme' => 'menu_local_action',
       '#link' => [
         'title' => $this->t('Add action'),
-        'url' => $this->getRulesUiHandler()->getUrlFromRoute('expression.add', [
-          'expression_id' => 'rules_action',
+        'url' => $this->getAutomationUiHandler()->getUrlFromRoute('expression.add', [
+          'expression_id' => 'automation_action',
         ]),
       ],
     ];
@@ -133,17 +133,17 @@ class ActionContainerForm extends ExpressionContainerFormBase {
       // when there are no values?
       return;
     }
-    $component = $this->getRulesUiHandler()->getComponent();
-    /** @var \Drupal\rules\Plugin\RulesExpression\RuleExpression $rule_expression */
-    $rule_expression = $component->getExpression();
+    $component = $this->getAutomationUiHandler()->getComponent();
+    /** @var \Drupal\social_automation\Plugin\AutomationExpression\AutomationExpression $automation_expression */
+    $automation_expression = $component->getExpression();
 
     foreach ($values as $uuid => $expression) {
-      $action = $rule_expression->getExpression($uuid);
+      $action = $automation_expression->getExpression($uuid);
       $action->setWeight($expression['weight']);
       $action->setConfiguration($action->getConfiguration());
     }
 
-    $this->getRulesUiHandler()->updateComponent($component);
+    $this->getAutomationUiHandler()->updateComponent($component);
   }
 
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Drupal\rules\Form;
+namespace Drupal\social_automation\Form;
 
 use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\rules\Ui\RulesUiHandlerInterface;
+use Drupal\social_automation\Ui\AutomationUiHandlerInterface;
 
 /**
  * Components form, ready to be embedded in some other form.
@@ -15,30 +15,30 @@ use Drupal\rules\Ui\RulesUiHandlerInterface;
 class EmbeddedComponentForm implements FormInterface {
 
   /**
-   * The RulesUI handler of the currently active UI.
+   * The AutomationUI handler of the currently active UI.
    *
-   * @var \Drupal\rules\Ui\RulesUiHandlerInterface
+   * @var \Drupal\social_automation\Ui\AutomationUiHandlerInterface
    */
-  protected $rulesUiHandler;
+  protected $automationUiHandler;
 
   /**
    * Constructs the object.
    *
-   * @param \Drupal\rules\Ui\RulesUiHandlerInterface $rules_ui_handler
+   * @param \Drupal\social_automation\Ui\AutomationUiHandlerInterface $social_automation_ui_handler
    *   The UI handler of the edited component.
    */
-  public function __construct(RulesUiHandlerInterface $rules_ui_handler) {
-    $this->rulesUiHandler = $rules_ui_handler;
+  public function __construct(AutomationUiHandlerInterface $social_automation_ui_handler) {
+    $this->automationUiHandler = $social_automation_ui_handler;
   }
 
   /**
    * Gets the form handler for the component's expression.
    *
-   * @return \Drupal\rules\Form\Expression\ExpressionFormInterface|null
+   * @return \Drupal\social_automation\Form\Expression\ExpressionFormInterface|null
    *   The form handling object if there is one, NULL otherwise.
    */
   protected function getFormHandler() {
-    return $this->rulesUiHandler
+    return $this->automationUiHandler
       ->getComponent()
       ->getExpression()
       ->getFormHandler();
@@ -48,14 +48,14 @@ class EmbeddedComponentForm implements FormInterface {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'rules_embedded_component_' . $this->rulesUiHandler->getPluginId();
+    return 'social_automation_embedded_component_' . $this->automationUiHandler->getPluginId();
   }
 
   /**
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form['locked'] = $this->rulesUiHandler->addLockInformation();
+    $form['locked'] = $this->automationUiHandler->addLockInformation();
     return $this->getFormHandler()->form($form, $form_state);
   }
 
@@ -63,7 +63,7 @@ class EmbeddedComponentForm implements FormInterface {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
-    $this->rulesUiHandler->validateLock($form, $form_state);
+    $this->automationUiHandler->validateLock($form, $form_state);
     $this->getFormHandler()->validateForm($form, $form_state);
   }
 

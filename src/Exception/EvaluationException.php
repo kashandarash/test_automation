@@ -1,10 +1,10 @@
 <?php
 
-namespace Drupal\rules\Exception;
+namespace Drupal\social_automation\Exception;
 
 /**
  * An exception that is thrown during evaluation.
  */
-class EvaluationException extends RulesException {
+class EvaluationException extends AutomationException {
 
 }

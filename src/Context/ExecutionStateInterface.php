@@ -1,7 +1,8 @@
 <?php
 
-namespace Drupal\rules\Context;
+namespace Drupal\social_automation\Context;
 
+use Drupal\Core\Plugin\Context\ContextDefinitionInterface;
 use Drupal\Core\TypedData\TypedDataInterface;
 
 /**
@@ -14,7 +15,7 @@ interface ExecutionStateInterface {
    *
    * @param string $name
    *   The context variable name.
-   * @param \Drupal\rules\Context\ContextDefinitionInterface $definition
+   * @param \Drupal\Core\Plugin\Context\ContextDefinitionInterface $definition
    *   The context definition of the variable.
    * @param mixed $value
    *   The variable value.
@@ -44,7 +45,7 @@ interface ExecutionStateInterface {
    * @return \Drupal\Core\TypedData\TypedDataInterface
    *   The variable wrapped as typed data.
    *
-   * @throws \Drupal\rules\Exception\EvaluationException
+   * @throws \Drupal\social_automation\Exception\EvaluationException
    *   Throws an EvaluationException if the variable does not exist in the
    *   state.
    */
@@ -59,7 +60,7 @@ interface ExecutionStateInterface {
    * @return mixed
    *   The variable value.
    *
-   * @throws \Drupal\rules\Exception\EvaluationException
+   * @throws \Drupal\social_automation\Exception\EvaluationException
    *   Throws an EvaluationException if the variable does not exist in the
    *   state.
    */
@@ -99,7 +100,7 @@ interface ExecutionStateInterface {
    * @return \Drupal\Core\TypedData\TypedDataInterface
    *   The variable wrapped as typed data.
    *
-   * @throws \Drupal\rules\Exception\EvaluationException
+   * @throws \Drupal\social_automation\Exception\EvaluationException
    *   Throws an EvaluationException in case the selector cannot be applied.
    */
   public function fetchDataByPropertyPath($property_path, $langcode = NULL);

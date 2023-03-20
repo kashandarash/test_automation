@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\rules\Form\Expression;
+namespace Drupal\social_automation\Form\Expression;
 
 use Drupal\Core\Form\FormStateInterface;
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace Drupal\rules\Engine;
+namespace Drupal\social_automation\Engine;
 
 use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\rules\Context\ContextConfig;
-use Drupal\rules\Context\ExecutionStateInterface;
-use Drupal\rules\Exception\InvalidExpressionException;
+use Drupal\social_automation\Context\ContextConfig;
+use Drupal\social_automation\Context\ExecutionStateInterface;
+use Drupal\social_automation\Exception\InvalidExpressionException;
 
 /**
  * Container for conditions.
@@ -16,7 +16,7 @@ abstract class ConditionExpressionContainer extends ExpressionContainerBase impl
   /**
    * List of conditions that are evaluated.
    *
-   * @var \Drupal\rules\Engine\ConditionExpressionInterface[]
+   * @var \Drupal\social_automation\Engine\ConditionExpressionInterface[]
    */
   protected $conditions = [];
 
@@ -29,15 +29,15 @@ abstract class ConditionExpressionContainer extends ExpressionContainerBase impl
    *   The plugin_id for the plugin instance.
    * @param array $plugin_definition
    *   The plugin implementation definition.
-   * @param \Drupal\rules\Engine\ExpressionManagerInterface $expression_manager
-   *   The rules expression plugin manager.
+   * @param \Drupal\social_automation\Engine\ExpressionManagerInterface $expression_manager
+   *   The automation expression plugin manager.
    * @param \Drupal\Core\Logger\LoggerChannelInterface $logger
-   *   The Rules debug logger channel.
+   *   The Automation debug logger channel.
    */
   public function __construct(array $configuration, $plugin_id, array $plugin_definition, ExpressionManagerInterface $expression_manager, LoggerChannelInterface $logger) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->expressionManager = $expression_manager;
-    $this->rulesDebugLogger = $logger;
+    $this->automationDebugLogger = $logger;
 
     $configuration += ['conditions' => []];
     foreach ($configuration['conditions'] as $condition_config) {
@@ -75,15 +75,15 @@ abstract class ConditionExpressionContainer extends ExpressionContainerBase impl
   /**
    * {@inheritdoc}
    */
-  public function executeWithState(ExecutionStateInterface $rules_state) {
-    $result = $this->evaluate($rules_state);
+  public function executeWithState(ExecutionStateInterface $social_automation_state) {
+    $result = $this->evaluate($social_automation_state);
     return $this->isNegated() ? !$result : $result;
   }
 
   /**
    * Returns the final result after executing the conditions.
    */
-  abstract public function evaluate(ExecutionStateInterface $rules_state);
+  abstract public function evaluate(ExecutionStateInterface $social_automation_state);
 
   /**
    * {@inheritdoc}
@@ -118,7 +118,7 @@ abstract class ConditionExpressionContainer extends ExpressionContainerBase impl
   /**
    * {@inheritdoc}
    */
-  public function getIterator() {
+  public function getIterator(): \Traversable {
     $iterator = new \ArrayIterator($this->conditions);
     $iterator->uasort([ExpressionContainerBase::class, 'sortByWeightProperty']);
     return $iterator;

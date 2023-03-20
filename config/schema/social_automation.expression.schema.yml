@@ -1,0 +1,107 @@
+social_automation_expression:
+  type: mapping
+  label: 'Automation expression'
+  mapping:
+    id:
+      type: string
+      label: 'Plugin ID'
+    uuid:
+      type: string
+      label: 'UUID'
+    weight:
+      type: integer
+      label: 'Weight'
+
+social_automation_expression.*:
+  type: social_automation_expression
+  label: 'Automation expression default configuration'
+
+social_automation_expression.social_automation_condition:
+  type: social_automation_expression
+  label: 'Automation condition configuration'
+  mapping:
+    condition_id:
+      type: string
+      label: 'Condition plugin ID'
+    negate:
+      type: boolean
+      label: 'Negated'
+    context_values:
+      type: social_automation.condition.context_values.[%parent.condition_id]
+      label: 'Context values'
+    context_mapping:
+      type: social_automation.context.mapping
+      label: 'Context mapping'
+    context_processors:
+      type: social_automation.context.processors
+      label: 'Context processors'
+    provides_mapping:
+      type: social_automation.context.mapping
+      label: 'Provided context mapping'
+
+social_automation_expression.social_automation_action:
+  type: social_automation_expression
+  label: 'Automation action configuration'
+  mapping:
+    action_id:
+      type: string
+      label: 'Action plugin ID'
+    context_values:
+      type: social_automation.action.context_values.[%parent.action_id]
+      label: 'Context values'
+    context_mapping:
+      type: social_automation.context.mapping
+      label: 'Context mapping'
+    context_processors:
+      type: social_automation.context.processors
+      label: 'Context processors'
+    provides_mapping:
+      type: social_automation.context.mapping
+      label: 'Provided context mapping'
+
+social_automation_expression.social_automation_and:
+  type: social_automation_expression
+  label: 'Automation And'
+  mapping:
+    negate:
+      type: boolean
+      label: 'Negate'
+    conditions:
+      type: sequence
+      label: 'Conditions'
+      sequence:
+        - type: social_automation_expression.[id]
+
+social_automation_expression.social_automation_or:
+  type: social_automation_expression
+  label: 'Automation Or'
+  mapping:
+    negate:
+      type: boolean
+      label: 'Negate'
+    conditions:
+      type: sequence
+      label: 'Conditions'
+      sequence:
+        - type: social_automation_expression.[id]
+
+social_automation_expression.social_automation_action_set:
+  type: social_automation_expression
+  label: 'Action set'
+  mapping:
+    actions:
+      type: sequence
+      label: 'Actions'
+      sequence:
+        - type: social_automation_expression.[id]
+
+social_automation_expression.automation_expression:
+  type: social_automation_expression
+  label: 'Workflow event'
+  mapping:
+    conditions:
+      type: social_automation_expression.[id]
+      label: 'Conditions'
+    actions:
+      type: social_automation_expression.[id]
+      label: 'Actions'

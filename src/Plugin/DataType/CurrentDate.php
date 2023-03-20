@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\rules\Plugin\DataType;
+namespace Drupal\social_automation\Plugin\DataType;
 
 use Drupal\Core\TypedData\Plugin\DataType\Map;
 
@@ -21,7 +21,7 @@ use Drupal\Core\TypedData\Plugin\DataType\Map;
  *   id = "current_date",
  *   label = @Translation("Current date"),
  *   description = @Translation("Current date"),
- *   definition_class = "\Drupal\rules\TypedData\Type\CurrentDateDataDefinition"
+ *   definition_class = "\Drupal\social_automation\TypedData\Type\CurrentDateDataDefinition"
  * )
  */
 class CurrentDate extends Map {
@@ -55,7 +55,7 @@ class CurrentDate extends Map {
 
     // Update any existing property objects.
     foreach ($this->properties as $name => $property) {
-      $value = isset($values[$name]) ? $values[$name] : NULL;
+      $value = $values[$name] ?? NULL;
       $property->setValue($value, FALSE);
       // Remove the value from $this->values to ensure it does not contain any
       // value for computed properties.

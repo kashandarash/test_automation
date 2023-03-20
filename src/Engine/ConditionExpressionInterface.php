@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\rules\Engine;
+namespace Drupal\social_automation\Engine;
 
 /**
- * Defines the interface for Rules expressions that can be used as conditions.
+ * Defines the interface for Automation expressions to be used as conditions.
  */
 interface ConditionExpressionInterface extends ExpressionInterface {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\rules\Core\Annotation;
+namespace Drupal\social_automation\Core\Annotation;
 
 use Drupal\Core\Condition\Annotation\Condition as CoreConditionAnnotation;
 
@@ -41,6 +41,7 @@ class Condition extends CoreConditionAnnotation {
    *   }
    * )
    */
+  // phpcs:ignore
   public $configure_permissions;
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\rules\Core;
+namespace Drupal\social_automation\Core;
 
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Session\AccountInterface;
@@ -31,10 +31,10 @@ trait ConfigurationAccessControlTrait {
       $account = \Drupal::currentUser();
     }
     // We treat these as our "super-user" accesses. We let the reaction
-    // rule and component permissions control the main admin UI.
+    // workflowevent and component permissions control the main admin UI.
     $admin_perms = [
-      'administer rules',
-      'bypass rules access',
+      'administer automation',
+      'bypass automation access',
     ];
 
     $access = FALSE;

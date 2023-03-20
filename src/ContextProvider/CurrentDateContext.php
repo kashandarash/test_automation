@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\rules\ContextProvider;
+namespace Drupal\social_automation\ContextProvider;
 
 use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Plugin\Context\Context;

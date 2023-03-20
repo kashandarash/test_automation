@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\rules\TypedData\Type;
+namespace Drupal\social_automation\TypedData\Type;
 
 /**
  * Interface for site data.

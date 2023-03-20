@@ -1,33 +1,33 @@
 <?php
 
-namespace Drupal\rules\Form\Expression;
+namespace Drupal\social_automation\Form\Expression;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Drupal\rules\Context\Form\ContextFormTrait;
-use Drupal\rules\Core\ConditionManager;
-use Drupal\rules\Engine\ConditionExpressionInterface;
-use Drupal\rules\Ui\RulesUiHandlerTrait;
+use Drupal\social_automation\Context\Form\ContextFormTrait;
+use Drupal\social_automation\Core\ConditionManager;
+use Drupal\social_automation\Engine\ConditionExpressionInterface;
+use Drupal\social_automation\Ui\AutomationUiHandlerTrait;
 
 /**
- * UI form for adding/editing a Rules condition.
+ * UI form for adding/editing a Automation condition.
  */
 class ConditionForm implements ExpressionFormInterface {
   use ContextFormTrait;
   use StringTranslationTrait;
-  use RulesUiHandlerTrait;
+  use AutomationUiHandlerTrait;
 
   /**
    * The condition plugin manager.
    *
-   * @var \Drupal\rules\Core\ConditionManager
+   * @var \Drupal\social_automation\Core\ConditionManager
    */
   protected $conditionManager;
 
   /**
    * The condition expression that is edited in the form.
    *
-   * @var \Drupal\rules\Engine\ConditionExpressionInterface
+   * @var \Drupal\social_automation\Engine\ConditionExpressionInterface
    */
   protected $conditionExpression;
 
@@ -57,6 +57,7 @@ class ConditionForm implements ExpressionFormInterface {
       $options = [];
       foreach ($condition_definitions as $group => $definitions) {
         foreach ($definitions as $id => $definition) {
+          $options[$group][$id] = $definition['label'];
           if ($group != $this->t('Other')) {
             // Because core Conditions do not currently define some context
             // values required by Rules, we need to make sure they can't be
@@ -89,7 +90,7 @@ class ConditionForm implements ExpressionFormInterface {
     }
 
     // Step 2 of the form.
-    /** @var \Drupal\rules\Core\RulesConditionInterface $condition */
+    /** @var \Drupal\social_automation\Core\AutomationConditionInterface $condition */
     $condition = $this->conditionManager->createInstance($condition_id);
 
     $form['summary'] = [
@@ -120,7 +121,7 @@ class ConditionForm implements ExpressionFormInterface {
       $form['provides'] = [
         '#type' => 'details',
         '#title' => $this->t('Provided variables'),
-        '#description' => $this->t('You may change the name of any provided variables, but note that renaming already-utilized variables invalidates the existing uses.'),
+        '#description' => $this->t('Adjust the name of provided variables, but note that renaming of already utilized variables invalidates the existing uses.'),
         '#open' => TRUE,
       ];
       foreach ($provides_definitions as $provides_name => $provides_definition) {

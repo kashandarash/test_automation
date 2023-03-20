@@ -1,0 +1,99 @@
+services:
+  cache.automation:
+    class: Drupal\Core\Cache\CacheBackendInterface
+    factory: cache_factory:get
+    arguments: [automation]
+    tags:
+      - { name: cache.bin }
+  plugin.manager.automation_expression:
+    class: Drupal\social_automation\Engine\ExpressionManager
+    arguments: ['@container.namespaces', '@module_handler', '@uuid']
+  plugin.manager.automation_action:
+    class: Drupal\social_automation\Core\AutomationActionManager
+    parent: default_plugin_manager
+  plugin.manager.automation_event:
+    class: Drupal\social_automation\Core\AutomationEventManager
+    arguments: ['@module_handler', '@entity_type.bundle.info']
+  plugin.manager.social_automation_data_processor:
+    class: Drupal\social_automation\Context\DataProcessorManager
+    arguments: ['@container.namespaces', '@module_handler']
+  plugin.manager.social_automation_ui:
+    class: Drupal\social_automation\Ui\AutomationUiManager
+    arguments: ['@module_handler']
+  logger.channel.automation:
+    parent: logger.channel_base
+    arguments: ['social_automation']
+  logger.channel.social_automation_debug:
+    class: Drupal\social_automation\Logger\AutomationDebugLoggerChannel
+    arguments: ['@logger.social_automation_debug_log', '@config.factory']
+  logger.social_automation_debug_log:
+    class: Drupal\social_automation\Logger\AutomationDebugLog
+    arguments: ['@session']
+  logger.automationlog:
+    class: Drupal\social_automation\Logger\AutomationLog
+    arguments: ['@event_dispatcher', '@logger.log_message_parser']
+    tags:
+      - { name: logger }
+  social_automation.event_subscriber:
+    class: Drupal\social_automation\EventSubscriber\GenericEventSubscriber
+    arguments:
+      - '@entity_type.manager'
+      - '@plugin.manager.automation_trigger'
+      - '@social_automation.component_repository'
+      - '@logger.channel.social_automation_debug'
+      - '@state'
+      - '@event_dispatcher'
+      - '@module_handler'
+    tags:
+      - { name: event_subscriber }
+  social_automation.redirect_event_subscriber:
+    class: Drupal\social_automation\EventSubscriber\RedirectEventSubscriber
+    tags:
+      - { name: event_subscriber }
+  social_automation.component_repository:
+    class: Drupal\social_automation\Engine\AutomationComponentRepository
+    arguments: ['@cache.automation', '@language_manager']
+    tags:
+      - { name: service_collector, tag: social_automation.component_resolver, call: addComponentResolver }
+  social_automation.component_resolver.component_config:
+    class: Drupal\social_automation\ComponentResolver\ComponentConfigResolver
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: social_automation.component_resolver, resolver_name: automation_component }
+  social_automation.component_resolver.event_component:
+    class: Drupal\social_automation\ComponentResolver\EventComponentResolver
+    arguments: ['@entity_type.manager', '@plugin.manager.automation_expression']
+    tags:
+      - { name: social_automation.component_resolver, resolver_name: automation_event }
+  social_automation.ui_route_enhancer:
+    class: Drupal\social_automation\Routing\AutomationUiRouteEnhancer
+    arguments: ['@plugin.manager.social_automation_ui']
+    tags:
+      - { name: route_enhancer }
+  social_automation.ui_route_subscriber:
+    class: Drupal\social_automation\Routing\AutomationUiRouteSubscriber
+    arguments: ['@plugin.manager.social_automation_ui']
+    tags:
+      - { name: event_subscriber }
+
+  social_automation.current_path_context:
+    class: Drupal\social_automation\ContextProvider\CurrentPathContext
+    arguments: ['@path.current']
+    tags:
+      - { name: context_provider }
+  social_automation.current_date_context:
+    class: Drupal\social_automation\ContextProvider\CurrentDateContext
+    arguments: ['@datetime.time']
+    tags:
+      - { name: context_provider }
+  social_automation.site_context:
+    class: Drupal\social_automation\ContextProvider\SiteContext
+    arguments: ['@config.factory']
+    tags:
+      - { name: context_provider }
+  plugin.manager.automation_trigger:
+    class: Drupal\social_automation\Plugin\AutomationTriggerManager
+    parent: default_plugin_manager
+  plugin.manager.automation_condition:
+    class: Drupal\social_automation\Core\ConditionManager
+    parent: default_plugin_manager

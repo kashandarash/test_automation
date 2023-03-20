@@ -1,0 +1,92 @@
+# Schema for the configuration files of the Automation module.
+
+social_automation.component.*:
+  type: config_entity
+  label: 'Automation component'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    description:
+      type: text
+      label: 'Administrative description'
+    tags:
+      type: sequence
+      label: Tags
+      sequence:
+        type: string
+        label: 'Tag'
+    config_version:
+      type: string
+      label: 'Configuration schema version'
+    component:
+      type: automation_component
+
+social_automation.reaction.*:
+  type: config_entity
+  label: 'Workflow event'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    events:
+      type: sequence
+      label: 'Events'
+      sequence:
+        type: mapping
+        label: 'Event'
+        mapping:
+          event_name:
+            type: string
+            label: 'Name'
+          configuration:
+            type: sequence
+            label: 'Configuration'
+            sequence:
+              type: mapping
+    description:
+      type: text
+      label: 'Administrative description'
+    tags:
+      type: sequence
+      label: Tags
+      sequence:
+        type: string
+        label: 'Tag'
+    config_version:
+      type: string
+      label: 'Configuration schema version'
+    expression:
+      type: social_automation_expression.[id]
+      label: 'Expression configuration'
+
+social_automation.settings:
+  type: config_object
+  label: 'Automation settings'
+  mapping:
+    system_log:
+      type: mapping
+      label: 'System logging'
+      mapping:
+        log_level:
+          type: string
+          label: 'Evaluation errors log level'
+    debug_log:
+      type: mapping
+      label: 'Debug logging'
+      mapping:
+        enabled:
+          type: boolean
+          label: 'Enable debug logging to screen'
+        system_debug:
+          type: boolean
+          label: 'Also log debug information to system log'
+        log_level:
+          type: string
+          label: 'Debug log level'

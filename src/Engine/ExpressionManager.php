@@ -1,17 +1,17 @@
 <?php
 
-namespace Drupal\rules\Engine;
+namespace Drupal\social_automation\Engine;
 
 use Drupal\Component\Uuid\UuidInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
-use Drupal\rules\Annotation\RulesExpression;
-use Drupal\rules\Context\ContextConfig;
+use Drupal\social_automation\Annotation\AutomationExpression;
+use Drupal\social_automation\Context\ContextConfig;
 
 /**
- * Plugin manager for all Rules expressions.
+ * Plugin manager for all Automation expressions.
  *
- * @see \Drupal\rules\Engine\ExpressionInterface
+ * @see \Drupal\social_automation\Engine\ExpressionInterface
  */
 class ExpressionManager extends DefaultPluginManager implements ExpressionManagerInterface {
 
@@ -25,9 +25,9 @@ class ExpressionManager extends DefaultPluginManager implements ExpressionManage
   /**
    * Constructor.
    */
-  public function __construct(\Traversable $namespaces, ModuleHandlerInterface $module_handler, UuidInterface $uuid_service, $plugin_definition_annotation_name = RulesExpression::class) {
-    $this->alterInfo('rules_expression');
-    parent::__construct('Plugin/RulesExpression', $namespaces, $module_handler, ExpressionInterface::class, $plugin_definition_annotation_name);
+  public function __construct(\Traversable $namespaces, ModuleHandlerInterface $module_handler, UuidInterface $uuid_service, $plugin_definition_annotation_name = AutomationExpression::class) {
+    $this->alterInfo('automation_expression');
+    parent::__construct('Plugin/AutomationExpression', $namespaces, $module_handler, ExpressionInterface::class, $plugin_definition_annotation_name);
     $this->uuidService = $uuid_service;
   }
 
@@ -47,9 +47,9 @@ class ExpressionManager extends DefaultPluginManager implements ExpressionManage
   /**
    * {@inheritdoc}
    */
-  public function createRule(ContextConfig $configuration = NULL) {
+  public function createWorkflowEvent(ContextConfig $configuration = NULL) {
     $config_array = is_null($configuration) ? [] : $configuration->toArray();
-    return $this->createInstance('rules_rule', $config_array);
+    return $this->createInstance('automation_expression', $config_array);
   }
 
   /**
@@ -57,7 +57,7 @@ class ExpressionManager extends DefaultPluginManager implements ExpressionManage
    */
   public function createActionSet(ContextConfig $configuration = NULL) {
     $config_array = is_null($configuration) ? [] : $configuration->toArray();
-    return $this->createInstance('rules_action_set', $config_array);
+    return $this->createInstance('automation_action_set', $config_array);
   }
 
   /**
@@ -65,7 +65,7 @@ class ExpressionManager extends DefaultPluginManager implements ExpressionManage
    */
   public function createAction($id, ContextConfig $configuration = NULL) {
     $config_array = is_null($configuration) ? [] : $configuration->toArray();
-    return $this->createInstance('rules_action', [
+    return $this->createInstance('automation_action', [
       'action_id' => $id,
     ] + $config_array);
   }
@@ -75,7 +75,7 @@ class ExpressionManager extends DefaultPluginManager implements ExpressionManage
    */
   public function createCondition($id, ContextConfig $configuration = NULL) {
     $config_array = is_null($configuration) ? [] : $configuration->toArray();
-    return $this->createInstance('rules_condition', [
+    return $this->createInstance('social_automation_condition', [
       'condition_id' => $id,
     ] + $config_array);
   }
@@ -84,14 +84,14 @@ class ExpressionManager extends DefaultPluginManager implements ExpressionManage
    * {@inheritdoc}
    */
   public function createAnd() {
-    return $this->createInstance('rules_and');
+    return $this->createInstance('social_automation_and');
   }
 
   /**
    * {@inheritdoc}
    */
   public function createOr() {
-    return $this->createInstance('rules_or');
+    return $this->createInstance('social_automation_or');
   }
 
 }

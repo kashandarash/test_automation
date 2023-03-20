@@ -1,6 +1,6 @@
 services:
-  rules.commands:
-    class: Drupal\rules\Commands\RulesCommands
-    arguments: ['@config.factory', '@config.storage', '@plugin.manager.rules_event']
+  social_automation.commands:
+    class: Drupal\social_automation\Commands\AutomationCommands
+    arguments: ['@config.factory', '@config.storage', '@plugin.manager.automation_trigger']
     tags:
       - { name: drush.command }

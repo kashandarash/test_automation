@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\rules\Engine;
+namespace Drupal\social_automation\Engine;
 
-use Drupal\rules\Context\ContextConfig;
+use Drupal\social_automation\Context\ContextConfig;
 
 /**
  * Defines a common interface for expressions containing other expressions.
@@ -18,10 +18,10 @@ interface ExpressionContainerInterface extends ExpressionInterface, \IteratorAgg
    *
    * @param string $plugin_id
    *   The id of the expression plugin to add.
-   * @param \Drupal\rules\Context\ContextConfig $config
+   * @param \Drupal\social_automation\Context\ContextConfig $config
    *   (optional) The configuration for the specified plugin.
    *
-   * @throws \Drupal\rules\Exception\InvalidExpressionException
+   * @throws \Drupal\social_automation\Exception\InvalidExpressionException
    *   Thrown if the wrong expression is passed; e.g. if a condition expression
    *   is added to an action expression container.
    *
@@ -32,10 +32,10 @@ interface ExpressionContainerInterface extends ExpressionInterface, \IteratorAgg
   /**
    * Adds an expression object.
    *
-   * @param \Drupal\rules\Engine\ExpressionInterface $expression
+   * @param \Drupal\social_automation\Engine\ExpressionInterface $expression
    *   The expression object.
    *
-   * @throws \Drupal\rules\Exception\InvalidExpressionException
+   * @throws \Drupal\social_automation\Exception\InvalidExpressionException
    *   Thrown if the wrong expression is passed; e.g. if a condition expression
    *   is added to an action expression container.
    *
@@ -49,7 +49,7 @@ interface ExpressionContainerInterface extends ExpressionInterface, \IteratorAgg
    * @param string $uuid
    *   The UUID of the expression.
    *
-   * @return \Drupal\rules\Engine\ExpressionInterface|false
+   * @return \Drupal\social_automation\Engine\ExpressionInterface|false
    *   The expression object or FALSE if not expression object with that UUID
    *   could be found.
    */

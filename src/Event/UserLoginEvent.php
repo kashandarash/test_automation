@@ -1,18 +1,18 @@
 <?php
 
-namespace Drupal\rules\Event;
+namespace Drupal\social_automation\Event;
 
+use Symfony\Contracts\EventDispatcher\Event;
 use Drupal\user\UserInterface;
-use Symfony\Component\EventDispatcher\Event;
 
 /**
  * Event that is fired when a user logs in.
  *
- * @see rules_user_login()
+ * @see social_automation_user_login()
  */
 class UserLoginEvent extends Event {
 
-  const EVENT_NAME = 'rules_user_login';
+  const EVENT_NAME = 'social_automation_user_login';
 
   /**
    * The user account.

@@ -1,12 +1,12 @@
 <?php
 
-namespace Drupal\rules\Context;
+namespace Drupal\social_automation\Context;
 
 use Drupal\Component\Annotation\Doctrine\SimpleAnnotationReader;
 use Drupal\Core\Plugin\Discovery\AnnotatedClassDiscovery as CoreAnnotatedClassDiscovery;
 
 /**
- * Extends the annotation class discovery for usage with Rules context.
+ * Extends the annotation class discovery for usage with Automation context.
  *
  * We modify the annotations classes for ContextDefinition and for Condition.
  * This class makes sure that our plugin managers apply these.
@@ -24,8 +24,8 @@ class AnnotatedClassDiscovery extends CoreAnnotatedClassDiscovery {
 
       // Make sure to add our namespace first, so our ContextDefinition and
       // Condition annotations gets picked.
-      $this->annotationReader->addNamespace('Drupal\rules\Context\Annotation');
-      $this->annotationReader->addNamespace('Drupal\rules\Core\Annotation');
+      $this->annotationReader->addNamespace('Drupal\social_automation\Context\Annotation');
+      $this->annotationReader->addNamespace('Drupal\social_automation\Core\Annotation');
       // Add the namespaces from the main plugin annotation, like @EntityType.
       $namespace = substr($this->pluginDefinitionAnnotationName, 0, strrpos($this->pluginDefinitionAnnotationName, '\\'));
       $this->annotationReader->addNamespace($namespace);

@@ -1,10 +1,10 @@
 <?php
 
-namespace Drupal\rules\EventHandler;
+namespace Drupal\social_automation\EventHandler;
 
-use Drupal\rules\Event\EntityEvent;
+use Symfony\Contracts\EventDispatcher\Event;
+use Drupal\social_automation\Event\EntityEvent;
 use Drupal\Core\Form\FormStateInterface;
-use Symfony\Component\EventDispatcher\Event;
 
 /**
  * Exposes the bundle of an entity as event setting.

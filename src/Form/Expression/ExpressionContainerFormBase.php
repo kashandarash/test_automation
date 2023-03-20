@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\rules\Form\Expression;
+namespace Drupal\social_automation\Form\Expression;
 
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Drupal\rules\Ui\RulesUiHandlerTrait;
+use Drupal\social_automation\Ui\AutomationUiHandlerTrait;
 
 /**
  * Form handler for action containers.
@@ -11,7 +11,7 @@ use Drupal\rules\Ui\RulesUiHandlerTrait;
 abstract class ExpressionContainerFormBase implements ExpressionFormInterface {
   use StringTranslationTrait;
   use ExpressionFormTrait;
-  use RulesUiHandlerTrait;
+  use AutomationUiHandlerTrait;
 
   /**
    * Helper function to extract context parameter names/values from the config.
@@ -29,7 +29,8 @@ abstract class ExpressionContainerFormBase implements ExpressionFormInterface {
     $context = [];
     if (isset($configuration['context_values']) && isset($configuration['context_mapping'])) {
       // @todo Remove this if() check on context_values and context_mapping when
-      // https://www.drupal.org/project/rules/issues/3103808 is fixed.
+      // https://www.drupal.org/project/social_automation/issues/3103808
+      // is fixed.
       $context = $configuration['context_mapping'] + $configuration['context_values'];
     }
     foreach ($context as $key => $value) {
@@ -58,7 +59,9 @@ abstract class ExpressionContainerFormBase implements ExpressionFormInterface {
       $description = $this->t('Parameters: <none>');
     }
     else {
-      $description = $this->t('Parameters: @name-value', ['@name-value' => implode(', ', $parameters)]);
+      $description = $this->t('Parameters: @name-value', [
+        '@name-value' => implode(', ', $parameters),
+      ]);
     }
 
     return $description;

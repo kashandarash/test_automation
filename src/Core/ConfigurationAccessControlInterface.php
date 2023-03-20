@@ -1,13 +1,13 @@
 <?php
 
-namespace Drupal\rules\Core;
+namespace Drupal\social_automation\Core;
 
 use Drupal\Core\Session\AccountInterface;
 
 /**
  * Defines a configuration permission control interface.
  *
- * @see \Drupal\rules\Core\ConfigurationAccessControlTrait.
+ * @see \Drupal\social_automation\Core\ConfigurationAccessControlTrait.
  */
 interface ConfigurationAccessControlInterface {
 

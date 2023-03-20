@@ -1,29 +1,29 @@
 <?php
 
-namespace Drupal\rules\Plugin\Condition;
+namespace Drupal\social_automation\Plugin\Condition;
 
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\rules\Core\RulesConditionBase;
+use Drupal\social_automation\Core\AutomationConditionBase;
 
 /**
  * Provides an 'Entity is of bundle' condition.
  *
  * @Condition(
- *   id = "rules_entity_is_of_bundle",
+ *   id = "social_automation_entity_is_of_bundle",
  *   label = @Translation("Entity is of bundle"),
  *   category = @Translation("Entity"),
  *   context_definitions = {
- *     "entity" = @ContextDefinition("entity",
+ *     "entity" = @ContextDefinition("any",
  *       label = @Translation("Entity"),
  *       description = @Translation("Specifies the entity for which to evaluate the condition."),
  *       assignment_restriction = "selector"
  *     ),
- *     "type" = @ContextDefinition("string",
+ *     "type" = @ContextDefinition("any",
  *       label = @Translation("Type"),
  *       description = @Translation("The type of the evaluated entity."),
  *       assignment_restriction = "input"
  *     ),
- *     "bundle" = @ContextDefinition("string",
+ *     "bundle" = @ContextDefinition("any",
  *       label = @Translation("Bundle"),
  *       description = @Translation("The bundle of the evaluated entity."),
  *       assignment_restriction = "input"
@@ -33,7 +33,7 @@ use Drupal\rules\Core\RulesConditionBase;
  *
  * @todo Add access callback information from Drupal 7?
  */
-class EntityIsOfBundle extends RulesConditionBase {
+class EntityIsOfBundle extends AutomationConditionBase {
 
   /**
    * Check if a provided entity is of a specific type and bundle.

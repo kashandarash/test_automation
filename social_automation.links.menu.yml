@@ -1,0 +1,5 @@
+social_automation.reactions:
+  title: 'Workflow events'
+  route_name: entity.social_automation_workflow_event.collection
+  parent: system.admin_config_workflow
+  description: 'Workflow events administration overview.'

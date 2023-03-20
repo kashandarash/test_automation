@@ -1,40 +1,40 @@
 <?php
 
-namespace Drupal\rules\Form\Expression;
+namespace Drupal\social_automation\Form\Expression;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Drupal\rules\Context\Form\ContextFormTrait;
-use Drupal\rules\Core\RulesActionManagerInterface;
-use Drupal\rules\Engine\ActionExpressionInterface;
-use Drupal\rules\Ui\RulesUiHandlerTrait;
+use Drupal\social_automation\Context\Form\ContextFormTrait;
+use Drupal\social_automation\Core\AutomationActionManagerInterface;
+use Drupal\social_automation\Engine\ActionExpressionInterface;
+use Drupal\social_automation\Ui\AutomationUiHandlerTrait;
 
 /**
- * UI form for adding/editing a Rules action.
+ * UI form for adding/editing a Automation action.
  */
 class ActionForm implements ExpressionFormInterface {
   use ContextFormTrait;
   use StringTranslationTrait;
-  use RulesUiHandlerTrait;
+  use AutomationUiHandlerTrait;
 
   /**
    * The action plugin manager.
    *
-   * @var \Drupal\rules\Core\RulesActionManagerInterface
+   * @var \Drupal\social_automation\Core\AutomationActionManagerInterface
    */
   protected $actionManager;
 
   /**
    * The action expression that is edited in the form.
    *
-   * @var \Drupal\rules\Engine\ActionExpressionInterface
+   * @var \Drupal\social_automation\Engine\ActionExpressionInterface
    */
   protected $actionExpression;
 
   /**
    * Creates a new object of this class.
    */
-  public function __construct(ActionExpressionInterface $action_expression, RulesActionManagerInterface $action_manager) {
+  public function __construct(ActionExpressionInterface $action_expression, AutomationActionManagerInterface $action_manager) {
     $this->actionManager = $action_manager;
     $this->actionExpression = $action_expression;
   }
@@ -109,7 +109,7 @@ class ActionForm implements ExpressionFormInterface {
       $form['provides'] = [
         '#type' => 'details',
         '#title' => $this->t('Provided variables'),
-        '#description' => $this->t('You may change the name of any provided variables, but note that renaming already-utilized variables invalidates the existing uses.'),
+        '#description' => $this->t('Adjust the name of provided variables, but note that renaming of already utilized variables invalidates the existing uses.'),
         '#tree' => TRUE,
       ];
       foreach ($provides_definitions as $provides_name => $provides_definition) {

@@ -1,17 +1,17 @@
 <?php
 
-namespace Drupal\rules\Context;
+namespace Drupal\social_automation\Context;
 
 use Drupal\Core\Plugin\Context\ContextDefinitionInterface as CoreContextDefinitionInterface;
 use Drupal\Core\Plugin\ContextAwarePluginInterface as CoreContextAwarePluginInterface;
 use Drupal\Core\TypedData\DataDefinitionInterface;
-use Drupal\rules\Context\ContextDefinitionInterface as RulesContextDefinitionInterface;
+use Drupal\social_automation\Context\ContextDefinitionInterface as AutomationContextDefinitionInterface;
 //@codingStandardsIgnoreStart
-use Drupal\rules\Context\ContextProviderInterface;
+use Drupal\social_automation\Context\ContextProviderInterface;
 //@codingStandardsIgnoreEnd
-use Drupal\rules\Exception\IntegrityException;
-use Drupal\rules\Engine\IntegrityViolation;
-use Drupal\rules\Engine\IntegrityViolationList;
+use Drupal\social_automation\Exception\IntegrityException;
+use Drupal\social_automation\Engine\IntegrityViolation;
+use Drupal\social_automation\Engine\IntegrityViolationList;
 
 /**
  * Extends the context handler trait with support for checking integrity.
@@ -25,11 +25,11 @@ trait ContextHandlerIntegrityTrait {
    *
    * @param \Drupal\Core\Plugin\ContextAwarePluginInterface $plugin
    *   The plugin with its defined context.
-   * @param \Drupal\rules\Context\ExecutionMetadataStateInterface $metadata_state
+   * @param \Drupal\social_automation\Context\ExecutionMetadataStateInterface $metadata_state
    *   The current configuration state with all defined variables that are
    *   available.
    *
-   * @return \Drupal\rules\Engine\IntegrityViolationList
+   * @return \Drupal\social_automation\Engine\IntegrityViolationList
    *   The list of integrity violations.
    */
   protected function checkContextConfigIntegrity(CoreContextAwarePluginInterface $plugin, ExecutionMetadataStateInterface $metadata_state) {
@@ -59,8 +59,8 @@ trait ContextHandlerIntegrityTrait {
           $violation_list->add($violation);
         }
 
-        if ($context_definition instanceof RulesContextDefinitionInterface
-          && $context_definition->getAssignmentRestriction() === RulesContextDefinitionInterface::ASSIGNMENT_RESTRICTION_INPUT
+        if ($context_definition instanceof AutomationContextDefinitionInterface
+          && $context_definition->getAssignmentRestriction() === AutomationContextDefinitionInterface::ASSIGNMENT_RESTRICTION_INPUT
         ) {
           $violation = new IntegrityViolation();
           $violation->setMessage($this->t('The context %context_name may not be configured using a selector.', [
@@ -72,8 +72,8 @@ trait ContextHandlerIntegrityTrait {
         }
       }
       elseif (isset($this->configuration['context_values'][$name])) {
-        if ($context_definition instanceof RulesContextDefinitionInterface
-          && $context_definition->getAssignmentRestriction() === RulesContextDefinitionInterface::ASSIGNMENT_RESTRICTION_SELECTOR
+        if ($context_definition instanceof AutomationContextDefinitionInterface
+          && $context_definition->getAssignmentRestriction() === AutomationContextDefinitionInterface::ASSIGNMENT_RESTRICTION_SELECTOR
         ) {
           $violation = new IntegrityViolation();
           $violation->setMessage($this->t('The context %context_name may only be configured using a selector.', [
@@ -125,7 +125,7 @@ trait ContextHandlerIntegrityTrait {
    *   The data definition of the mapped variable to the context.
    * @param string $context_name
    *   The name of the context on the plugin.
-   * @param \Drupal\rules\Engine\IntegrityViolationList $violation_list
+   * @param \Drupal\social_automation\Engine\IntegrityViolationList $violation_list
    *   The list of violations where new ones will be added.
    */
   protected function checkDataTypeCompatible(CoreContextDefinitionInterface $context_definition, DataDefinitionInterface $provided, $context_name, IntegrityViolationList $violation_list) {
@@ -134,7 +134,7 @@ trait ContextHandlerIntegrityTrait {
     $target_type = $context_definition->getDataDefinition()->getDataType();
 
     // Special case any and entity target types for now.
-    if ($target_type == 'any' || ($target_type == 'entity' && strpos($provided->getDataType(), 'entity:') !== FALSE)) {
+    if ($target_type == 'any' || ($target_type == 'entity' && str_contains($provided->getDataType(), 'entity:'))) {
       return;
     }
     if ($target_type != $provided->getDataType()) {

@@ -1,0 +1,10 @@
+name: Social Automation
+type: module
+description: 'React on events and conditionally evaluate actions.'
+package: Social
+core_version_requirement: ^9.4
+dependencies:
+  - typed_data:typed_data
+
+configure: entity.social_automation_workflow_event.collection
+php: 8.0

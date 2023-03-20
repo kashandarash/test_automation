@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\rules\Context;
+namespace Drupal\social_automation\Context;
 
 use Drupal\Core\Plugin\Context\ContextRepositoryInterface;
 

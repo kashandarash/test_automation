@@ -1,42 +1,42 @@
 <?php
 
-namespace Drupal\rules\Engine;
+namespace Drupal\social_automation\Engine;
 
 use Drupal\Component\Plugin\ConfigurableInterface;
 use Drupal\Component\Plugin\DependentPluginInterface;
 use Drupal\Component\Plugin\PluginInspectionInterface;
 use Drupal\Core\Executable\ExecutableInterface;
-use Drupal\rules\Context\ExecutionMetadataStateInterface;
-use Drupal\rules\Context\ExecutionStateInterface;
+use Drupal\social_automation\Context\ExecutionMetadataStateInterface;
+use Drupal\social_automation\Context\ExecutionStateInterface;
 
 /**
- * Defines the interface for Rules expressions.
+ * Defines the interface for Automation expressions.
  *
- * @see \Drupal\rules\Engine\ExpressionManager
+ * @see \Drupal\social_automation\Engine\ExpressionManager
  */
 interface ExpressionInterface extends ExecutableInterface, ConfigurableInterface, DependentPluginInterface, PluginInspectionInterface {
 
   /**
-   * Execute the expression with a given Rules state.
+   * Execute the expression with a given Automation state.
    *
    * Note that this does not auto-save any changes.
    *
-   * @param \Drupal\rules\Context\ExecutionStateInterface $state
+   * @param \Drupal\social_automation\Context\ExecutionStateInterface $state
    *   The state with all the execution variables in it.
    *
    * @return null|bool
    *   The expression may return a boolean value after execution, this is used
    *   by conditions that return their evaluation result.
    *
-   * @throws \Drupal\rules\Exception\EvaluationException
-   *   Thrown if the Rules expression triggers errors during execution.
+   * @throws \Drupal\social_automation\Exception\EvaluationException
+   *   Thrown if the Automation expression triggers errors during execution.
    */
   public function executeWithState(ExecutionStateInterface $state);
 
   /**
    * Returns the form handling class for this expression.
    *
-   * @return \Drupal\rules\Form\Expression\ExpressionFormInterface|null
+   * @return \Drupal\social_automation\Form\Expression\ExpressionFormInterface|null
    *   The form handling object if there is one, NULL otherwise.
    */
   public function getFormHandler();
@@ -44,7 +44,7 @@ interface ExpressionInterface extends ExecutableInterface, ConfigurableInterface
   /**
    * Returns the root expression if this expression is nested.
    *
-   * @return \Drupal\rules\Engine\ExpressionInterface
+   * @return \Drupal\social_automation\Engine\ExpressionInterface
    *   The root expression or $this if the expression is the root element
    *   itself.
    */
@@ -53,7 +53,7 @@ interface ExpressionInterface extends ExecutableInterface, ConfigurableInterface
   /**
    * Set the root expression for this expression if it is nested.
    *
-   * @param \Drupal\rules\Engine\ExpressionInterface $root
+   * @param \Drupal\social_automation\Engine\ExpressionInterface $root
    *   The root expression object.
    *
    * @return $this
@@ -114,17 +114,18 @@ interface ExpressionInterface extends ExecutableInterface, ConfigurableInterface
    * expression must apply all metadata state preparations during its integrity
    * check as it does in ::prepareExecutionMetadataState().
    * This allows for efficient integrity checks of expression trees; e.g. see
-   * \Drupal\rules\Engine\ActionExpressionContainer::checkIntegrity().
+   * \Drupal\social_automation\Engine\ActionExpressionContainer::checkIntegrity().
    *
-   * @param \Drupal\rules\Context\ExecutionMetadataStateInterface $metadata_state
+   * @param \Drupal\social_automation\Context\ExecutionMetadataStateInterface $metadata_state
    *   The execution metadata state, prepared until right before this
    *   expression.
    * @param bool $apply_assertions
    *   (optional) Whether to apply metadata assertions while preparing the
    *   execution metadata state. Defaults to TRUE.
    *
-   * @return \Drupal\rules\Engine\IntegrityViolationList
-   *   A list object containing \Drupal\rules\Engine\IntegrityViolation objects.
+   * @return \Drupal\social_automation\Engine\IntegrityViolationList
+   *   A list object containing
+   *   \Drupal\social_automation\Engine\IntegrityViolation objects.
    *
    * @see ::prepareExecutionMetadataState()
    */
@@ -147,10 +148,10 @@ interface ExpressionInterface extends ExecutableInterface, ConfigurableInterface
    * $until = NULL reflects the execution metadata state at the end of the
    * expression execution.
    *
-   * @param \Drupal\rules\Context\ExecutionMetadataStateInterface $metadata_state
+   * @param \Drupal\social_automation\Context\ExecutionMetadataStateInterface $metadata_state
    *   The execution metadata state, prepared until right before this
    *   expression.
-   * @param \Drupal\rules\Engine\ExpressionInterface $until
+   * @param \Drupal\social_automation\Engine\ExpressionInterface $until
    *   (optional) The expression at which metadata preparation should be
    *   stopped. The preparation of the state will be stopped right before that
    *   expression.

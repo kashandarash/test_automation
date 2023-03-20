@@ -1,0 +1,13 @@
+social_automation.reaction_automation:
+  label: 'Manage reaction social_automation.'
+  base_route: entity.social_automation_workflow_event.edit_form
+  component_type_label: workflowevent
+  settings:
+    config_parameter: social_automation_workflow_event
+
+social_automation.components:
+  label: 'Manage reusable components.'
+  base_route: entity.automation_component.edit_form
+  component_type_label: workflowevent
+  settings:
+    config_parameter: automation_component
