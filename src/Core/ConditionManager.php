@@ -1,22 +1,23 @@
 <?php
 
-namespace Drupal\rules\Core;
+namespace Drupal\social_automation\Core;
 
 use Drupal\Core\Condition\ConditionManager as CoreConditionManager;
 use Drupal\Core\Plugin\Discovery\ContainerDerivativeDiscoveryDecorator;
-use Drupal\rules\Context\AnnotatedClassDiscovery;
+use Drupal\social_automation\Context\AnnotatedClassDiscovery;
 
 /**
- * Extends the core condition manager to add in Rules' context improvements.
+ * Extends core condition manager to add in Automation' context improvements.
  */
 class ConditionManager extends CoreConditionManager {
 
   /**
    * {@inheritdoc}
    *
-   * @return \Drupal\rules\Core\RulesConditionInterface|\Drupal\Core\Condition\ConditionInterface
+   * @return \Drupal\social_automation\Core\AutomationConditionInterface|\Drupal\Core\Condition\ConditionInterface
    *   A fully configured plugin instance.
    */
+  // phpcs:ignore
   public function createInstance($plugin_id, array $configuration = []) {
     return parent::createInstance($plugin_id, $configuration);
   }

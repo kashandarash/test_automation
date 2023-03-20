@@ -1,14 +1,14 @@
 <?php
 
-namespace Drupal\rules\Context;
+namespace Drupal\social_automation\Context;
 
 use Drupal\Core\Plugin\Context\ContextDefinitionInterface as ContextDefinitionInterfaceCore;
 
 /**
- * Context definition information required by Rules.
+ * Context definition information required by social_automation.
  *
  * The core interface is extended to add properties that are necessary for
- * Rules.
+ * social_automation.
  */
 interface ContextDefinitionInterface extends ContextDefinitionInterfaceCore {
 

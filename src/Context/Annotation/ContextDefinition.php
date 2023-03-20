@@ -1,16 +1,16 @@
 <?php
 
-namespace Drupal\rules\Context\Annotation;
+namespace Drupal\social_automation\Context\Annotation;
 
 use Drupal\Core\Annotation\ContextDefinition as CoreContextDefinition;
 use Drupal\Core\Annotation\Translation;
-use Drupal\rules\Context\ContextDefinition as RulesContextDefinition;
+use Drupal\social_automation\Context\ContextDefinition as AutomationContextDefinition;
 
 /**
- * Extends the core context definition annotation object for Rules.
+ * Extends the core context definition annotation object for social_automation.
  *
  * Ensures context definitions use
- * \Drupal\rules\Context\ContextDefinitionInterface.
+ * \Drupal\social_automation\Context\ContextDefinitionInterface.
  *
  * @Annotation
  *
@@ -21,7 +21,7 @@ class ContextDefinition extends CoreContextDefinition {
   /**
    * The ContextDefinitionInterface object.
    *
-   * @var \Drupal\rules\Context\ContextDefinitionInterface
+   * @var \Drupal\social_automation\Context\ContextDefinitionInterface
    */
   protected $definition;
 
@@ -35,14 +35,14 @@ class ContextDefinition extends CoreContextDefinition {
         $values[$key] = $value->get();
       }
     }
-    $this->definition = RulesContextDefinition::createFromArray($values);
+    $this->definition = AutomationContextDefinition::createFromArray($values);
   }
 
   /**
    * Returns the value of an annotation.
    *
-   * @return \Drupal\rules\Context\ContextDefinitionInterface
-   *   Return the Rules version of the ContextDefinitionInterface.
+   * @return \Drupal\social_automation\Context\ContextDefinitionInterface
+   *   Return the Automation version of the ContextDefinitionInterface.
    */
   public function get() {
     return $this->definition;

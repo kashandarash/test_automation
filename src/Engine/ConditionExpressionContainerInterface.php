@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\rules\Engine;
+namespace Drupal\social_automation\Engine;
 
-use Drupal\rules\Context\ContextConfig;
+use Drupal\social_automation\Context\ContextConfig;
 
 /**
  * Contains condition expressions.
@@ -14,10 +14,10 @@ interface ConditionExpressionContainerInterface extends ConditionExpressionInter
    *
    * @param string $condition_id
    *   The condition plugin id.
-   * @param \Drupal\rules\Context\ContextConfig $config
+   * @param \Drupal\social_automation\Context\ContextConfig $config
    *   (optional) The configuration for the specified plugin.
    *
-   * @return \Drupal\rules\Core\RulesConditionInterface
+   * @return \Drupal\social_automation\Core\AutomationConditionInterface
    *   The created condition.
    */
   public function addCondition($condition_id, ContextConfig $config = NULL);

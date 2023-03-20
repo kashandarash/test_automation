@@ -1,16 +1,16 @@
 <?php
 
-namespace Drupal\rules\Form;
+namespace Drupal\social_automation\Form;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\ConfirmFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\RendererInterface;
-use Drupal\rules\Ui\RulesUiHandlerInterface;
+use Drupal\social_automation\Ui\AutomationUiHandlerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Builds the form to break the lock of an edited rule.
+ * Builds the form to break the lock of an edited workflowevent.
  */
 class BreakLockForm extends ConfirmFormBase {
 
@@ -29,11 +29,11 @@ class BreakLockForm extends ConfirmFormBase {
   protected $renderer;
 
   /**
-   * The RulesUI handler of the currently active UI.
+   * The AutomationUI handler of the currently active UI.
    *
-   * @var \Drupal\rules\Ui\RulesUiHandlerInterface
+   * @var \Drupal\social_automation\Ui\AutomationUiHandlerInterface
    */
-  protected $rulesUiHandler;
+  protected $automationUiHandler;
 
   /**
    * Constructor.
@@ -57,21 +57,21 @@ class BreakLockForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'rules_break_lock_confirm';
+    return 'social_automation_break_lock_confirm';
   }
 
   /**
    * {@inheritdoc}
    */
   public function getQuestion() {
-    return $this->t('Do you want to break the lock on %label?', ['%label' => $this->rulesUiHandler->getComponentLabel()]);
+    return $this->t('Do you want to break the lock on %label?', ['%label' => $this->automationUiHandler->getComponentLabel()]);
   }
 
   /**
    * {@inheritdoc}
    */
   public function getDescription() {
-    $locked = $this->rulesUiHandler->getLockMetaData();
+    $locked = $this->automationUiHandler->getLockMetaData();
     $account = $this->entityTypeManager->getStorage('user')->load($locked->getOwnerId());
     $username = [
       '#theme' => 'username',
@@ -86,7 +86,7 @@ class BreakLockForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function getCancelUrl() {
-    return $this->rulesUiHandler->getBaseRouteUrl();
+    return $this->automationUiHandler->getBaseRouteUrl();
   }
 
   /**
@@ -99,10 +99,10 @@ class BreakLockForm extends ConfirmFormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, RulesUiHandlerInterface $rules_ui_handler = NULL) {
-    $this->rulesUiHandler = $rules_ui_handler;
-    if (!$rules_ui_handler->isLocked()) {
-      $form['message']['#markup'] = $this->t('There is no lock on %label to break.', ['%label' => $rules_ui_handler->getComponentLabel()]);
+  public function buildForm(array $form, FormStateInterface $form_state, AutomationUiHandlerInterface $social_automation_ui_handler = NULL) {
+    $this->automationUiHandler = $social_automation_ui_handler;
+    if (!$social_automation_ui_handler->isLocked()) {
+      $form['message']['#markup'] = $this->t('There is no lock on %label to break.', ['%label' => $social_automation_ui_handler->getComponentLabel()]);
       return $form;
     }
     return parent::buildForm($form, $form_state);
@@ -112,10 +112,10 @@ class BreakLockForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $this->rulesUiHandler->clearTemporaryStorage();
-    $form_state->setRedirectUrl($this->rulesUiHandler->getBaseRouteUrl());
+    $this->automationUiHandler->clearTemporaryStorage();
+    $form_state->setRedirectUrl($this->automationUiHandler->getBaseRouteUrl());
     $this->messenger()->addMessage($this->t('The lock has been broken and you may now edit this @component_type.', [
-      '@component_type' => $this->rulesUiHandler->getPluginDefinition()->component_type_label,
+      '@component_type' => $this->automationUiHandler->getPluginDefinition()->component_type_label,
     ]));
   }
 

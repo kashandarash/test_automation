@@ -1,10 +1,10 @@
 <?php
 
-namespace Drupal\rules\Exception;
+namespace Drupal\social_automation\Exception;
 
 /**
  * An exception that is thrown during integrity checks at configuration time.
  */
-class IntegrityException extends RulesException {
+class IntegrityException extends AutomationException {
 
 }

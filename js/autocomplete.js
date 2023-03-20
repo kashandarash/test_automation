@@ -104,10 +104,10 @@
    * @prop {Drupal~behaviorDetach} detach
    *   Detaches the autocomplete behaviors.
    */
-  Drupal.behaviors.rules_autocomplete = {
+  Drupal.behaviors.social_automation_autocomplete = {
     attach: function (context) {
-      // Act on textfields with the "rules-autocomplete" class.
-      var $autocomplete = $(context).find('input.rules-autocomplete').once('autocomplete');
+      // Act on textfields with the "automation-autocomplete" class.
+      var $autocomplete = $(context).find('input.automation-autocomplete').once('autocomplete');
       if ($autocomplete.length) {
 
         var closing = false;
@@ -136,7 +136,7 @@
     },
     detach: function (context, settings, trigger) {
       if (trigger === 'unload') {
-        $(context).find('input.rules-autocomplete')
+        $(context).find('input.automation-autocomplete')
           .removeOnce('autocomplete')
           .autocomplete('destroy');
       }

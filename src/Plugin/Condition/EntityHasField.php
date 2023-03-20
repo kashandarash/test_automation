@@ -1,24 +1,24 @@
 <?php
 
-namespace Drupal\rules\Plugin\Condition;
+namespace Drupal\social_automation\Plugin\Condition;
 
 use Drupal\Core\Entity\FieldableEntityInterface;
-use Drupal\rules\Core\RulesConditionBase;
+use Drupal\social_automation\Core\AutomationConditionBase;
 
 /**
  * Provides a 'Entity has field' condition.
  *
  * @Condition(
- *   id = "rules_entity_has_field",
+ *   id = "social_automation_entity_has_field",
  *   label = @Translation("Entity has field"),
  *   category = @Translation("Entity"),
  *   context_definitions = {
- *     "entity" = @ContextDefinition("entity",
+ *     "entity" = @ContextDefinition("any",
  *       label = @Translation("Entity"),
  *       description = @Translation("Specifies the entity for which to evaluate the condition."),
  *       assignment_restriction = "selector"
  *     ),
- *     "field" = @ContextDefinition("string",
+ *     "field" = @ContextDefinition("any",
  *       label = @Translation("Field"),
  *       description = @Translation("The name of the field to check for."),
  *       assignment_restriction = "input"
@@ -28,7 +28,7 @@ use Drupal\rules\Core\RulesConditionBase;
  *
  * @todo Add access callback information from Drupal 7.
  */
-class EntityHasField extends RulesConditionBase {
+class EntityHasField extends AutomationConditionBase {
 
   /**
    * Checks if a given entity has a given field.

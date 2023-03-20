@@ -1,0 +1,35 @@
+social_automation.autocomplete:
+  js:
+    js/autocomplete.js: { weight: -1 }
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/drupal.ajax
+    - core/jquery.ui.autocomplete
+
+social_automation_ui.listing:
+  js:
+    js/social_automation_ui.listing.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+    - social_automation/social_automation_ui.styles
+
+social_automation_ui.styles:
+  css:
+    theme:
+      css/social_automation_ui.css: {}
+
+social_automation.debug:
+  js:
+    js/debug.js: {}
+  css:
+    theme:
+      css/debug.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.ui

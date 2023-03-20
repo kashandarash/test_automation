@@ -1,0 +1,109 @@
+# Declaration of Automation routings.
+
+### Automation settings form
+social_automation.settings:
+  path: '/admin/config/workflow/social_automation/settings'
+  defaults:
+    _form: '\Drupal\social_automation\Form\AutomationSettingsForm'
+    _title: 'Automation settings'
+  requirements:
+    _permission: 'administer automation'
+
+### Automation Reactions
+entity.social_automation_workflow_event.collection:
+  path: '/admin/config/workflow/social_automation'
+  defaults:
+    _entity_list: 'social_automation_workflow_event'
+    _title: 'Automation'
+  requirements:
+    _permission: 'administer automation+administer automation reactions'
+
+entity.social_automation_workflow_event.add_form:
+  path: '/admin/config/workflow/social_automation/reactions/add'
+  defaults:
+    _entity_form: 'social_automation_workflow_event.add'
+    _title: 'Add workflow event'
+  options:
+    _social_automation_ui: social_automation.reaction_automation
+  requirements:
+    _permission: 'administer automation+administer automation reactions'
+
+entity.social_automation_workflow_event.edit_form:
+  path: '/admin/config/workflow/social_automation/reactions/edit/{social_automation_workflow_event}'
+  defaults:
+    _entity_form: 'social_automation_workflow_event.edit'
+    _title_callback: '\Drupal\social_automation\Form\WorkflowEventEditForm::getTitle'
+  options:
+    _social_automation_ui: social_automation.reaction_automation
+  requirements:
+    _permission: 'administer automation+administer automation reactions'
+
+entity.social_automation_workflow_event.delete_form:
+  path: '/admin/config/workflow/social_automation/reactions/delete/{social_automation_workflow_event}'
+  defaults:
+    _entity_form: 'social_automation_workflow_event.delete'
+  options:
+    _social_automation_ui: social_automation.reaction_automation
+  requirements:
+    _permission: 'administer automation+administer automation reactions'
+
+entity.social_automation_workflow_event.enable:
+  path: '/admin/config/workflow/social_automation/reactions/enable/{social_automation_workflow_event}'
+  defaults:
+    _controller: '\Drupal\social_automation\Controller\AutomationReactionController::enableConfig'
+    _title: 'Enable workflow event'
+  options:
+    _social_automation_ui: social_automation.reaction_automation
+  requirements:
+    _permission: 'administer automation+administer automation reactions'
+    _csrf_token: 'TRUE'
+
+entity.social_automation_workflow_event.disable:
+  path: '/admin/config/workflow/social_automation/reactions/disable/{social_automation_workflow_event}'
+  defaults:
+    _controller: '\Drupal\social_automation\Controller\AutomationReactionController::disableConfig'
+    _title: 'Disable workflow event'
+  options:
+    _social_automation_ui: social_automation.reaction_automation
+  requirements:
+    _permission: 'administer automation+administer automation reactions'
+    _csrf_token: 'TRUE'
+
+### Automation Components
+entity.automation_component.collection:
+  path: '/admin/config/workflow/social_automation/components'
+  defaults:
+  # Calls the list controller, defined in the annotation of the automation component entity.
+    _entity_list: 'automation_component'
+    _title: 'Automation components'
+  requirements:
+    _permission: 'administer automation+administer automation components'
+
+entity.automation_component.add_form.workflowevent:
+  path: '/admin/config/workflow/social_automation/components/add/workflowevent'
+  defaults:
+    _entity_form: 'automation_component.add'
+    _title: 'Add workflowevent'
+  options:
+    _social_automation_ui: social_automation.components
+  requirements:
+    _permission: 'administer automation+administer automation components'
+
+entity.automation_component.edit_form:
+  path: '/admin/config/workflow/social_automation/components/edit/{automation_component}'
+  defaults:
+    _entity_form: 'automation_component.edit'
+    _title_callback: '\Drupal\social_automation\Form\AutomationComponentEditForm::getTitle'
+  options:
+    _social_automation_ui: social_automation.components
+  requirements:
+    _permission: 'administer automation+administer automation components'
+
+entity.automation_component.delete_form:
+  path: '/admin/config/workflow/social_automation/components/delete/{automation_component}'
+  defaults:
+    _entity_form: 'automation_component.delete'
+  options:
+    _social_automation_ui: social_automation.components
+  requirements:
+    _permission: 'administer automation+administer automation components'

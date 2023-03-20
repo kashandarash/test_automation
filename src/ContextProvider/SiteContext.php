@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\rules\ContextProvider;
+namespace Drupal\social_automation\ContextProvider;
 
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Config\ConfigFactoryInterface;

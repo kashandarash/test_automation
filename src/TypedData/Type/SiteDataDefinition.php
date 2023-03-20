@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\rules\TypedData\Type;
+namespace Drupal\social_automation\TypedData\Type;
 
 use Drupal\Core\TypedData\ComplexDataDefinitionBase;
 use Drupal\Core\TypedData\DataDefinition;

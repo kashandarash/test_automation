@@ -1,0 +1,19 @@
+# Most of the time administrators will be able to administer both reactions,
+# components and settings. But permissions are split up in such a way it
+# should be possible to have 'light' and 'root' social_automation administrators.
+administer social_automation:
+  title: 'Administer Automation'
+  description: 'Administer all Automation configurations and settings.'
+administer social_automation reactions:
+  title: 'Administer Automation reactions'
+  description: 'Administer Automation reaction configurations and settings.'
+administer social_automation components:
+  title: 'Administer Automation components'
+  description: 'Administer Automation component configurations and settings.'
+bypass social_automation access:
+  title: 'Bypass Automation access control'
+  description: 'Control all configurations regardless of permission restrictions of events, conditions or actions.'
+  restrict access: true
+access social_automation debug:
+  title: 'View Automation debug log'
+  description: 'Access the Automation debug log.'

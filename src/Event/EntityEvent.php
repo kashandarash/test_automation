@@ -1,13 +1,13 @@
 <?php
 
-namespace Drupal\rules\Event;
+namespace Drupal\social_automation\Event;
 
 use Symfony\Component\EventDispatcher\GenericEvent;
 
 /**
  * Represent various entity events.
  *
- * @see rules_entity_presave()
+ * @see social_automation_entity_presave()
  */
 class EntityEvent extends GenericEvent {
 

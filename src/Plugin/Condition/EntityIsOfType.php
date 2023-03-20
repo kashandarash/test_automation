@@ -1,24 +1,24 @@
 <?php
 
-namespace Drupal\rules\Plugin\Condition;
+namespace Drupal\social_automation\Plugin\Condition;
 
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\rules\Core\RulesConditionBase;
+use Drupal\social_automation\Core\AutomationConditionBase;
 
 /**
  * Provides an 'Entity is of type' condition.
  *
  * @Condition(
- *   id = "rules_entity_is_of_type",
+ *   id = "social_automation_entity_is_of_type",
  *   label = @Translation("Entity is of type"),
  *   category = @Translation("Entity"),
  *   context_definitions = {
- *     "entity" = @ContextDefinition("entity",
+ *     "entity" = @ContextDefinition("any",
  *       label = @Translation("Entity"),
  *       description = @Translation("Specifies the entity for which to evaluate the condition."),
  *       assignment_restriction = "selector"
  *     ),
- *     "type" = @ContextDefinition("string",
+ *     "type" = @ContextDefinition("any",
  *       label = @Translation("Type"),
  *       description = @Translation("The entity type specified by the condition."),
  *       assignment_restriction = "input"
@@ -28,7 +28,7 @@ use Drupal\rules\Core\RulesConditionBase;
  *
  * @todo Add access callback information from Drupal 7?
  */
-class EntityIsOfType extends RulesConditionBase {
+class EntityIsOfType extends AutomationConditionBase {
 
   /**
    * Check if the provided entity is of a specific type.

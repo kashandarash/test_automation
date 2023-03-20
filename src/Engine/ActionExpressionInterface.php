@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\rules\Engine;
+namespace Drupal\social_automation\Engine;
 
 /**
- * Defines the interface for Rules expressions that can be used as actions.
+ * Defines the interface for Automation expressions that can be used as actions.
  */
 interface ActionExpressionInterface extends ExpressionInterface {
 

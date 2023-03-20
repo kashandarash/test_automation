@@ -1,10 +1,10 @@
 <?php
 
-namespace Drupal\rules\Exception;
+namespace Drupal\social_automation\Exception;
 
 /**
  * An exception that is thrown if an argument is invalid.
  */
-class InvalidArgumentException extends RulesException {
+class InvalidArgumentException extends AutomationException {
 
 }

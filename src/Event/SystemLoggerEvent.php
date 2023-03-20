@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\rules\Event;
+namespace Drupal\social_automation\Event;
 
 use Symfony\Component\EventDispatcher\GenericEvent;
 
@@ -9,6 +9,6 @@ use Symfony\Component\EventDispatcher\GenericEvent;
  */
 class SystemLoggerEvent extends GenericEvent {
 
-  const EVENT_NAME = 'rules_system_logger_event';
+  const EVENT_NAME = 'social_automation_system_logger_event';
 
 }

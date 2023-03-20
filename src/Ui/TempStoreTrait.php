@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\rules\Ui;
+namespace Drupal\social_automation\Ui;
 
 use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -8,13 +8,13 @@ use Drupal\Core\TempStore\SharedTempStoreFactory;
 use Drupal\Core\Url;
 
 /**
- * Provides methods for modified rules components in temporary storage.
+ * Provides methods for modified automation components in temporary storage.
  *
  * Note that this implements the lock-related methods of
- * \Drupal\rules\Ui\RulesUiHandlerInterface.
+ * \Drupal\social_automation\Ui\AutomationUiHandlerInterface.
  *
- * @see \Drupal\rules\Ui\RulesUiHandlerInterface
- * @see \Drupal\rules\Ui\RulesUiConfigHandler
+ * @see \Drupal\social_automation\Ui\AutomationUiHandlerInterface
+ * @see \Drupal\social_automation\Ui\AutomationUiConfigHandler
  */
 trait TempStoreTrait {
 
@@ -26,18 +26,18 @@ trait TempStoreTrait {
   protected $tempStoreFactory;
 
   /**
-   * The temporary store for the rules component.
+   * The temporary store for the automation component.
    *
    * @var \Drupal\Core\TempStore\SharedTempStore
    */
   protected $tempStore;
 
   /**
-   * The currently active rules UI handler.
+   * The currently active automation UI handler.
    *
-   * @var \Drupal\rules\Ui\RulesUiHandlerInterface
+   * @var \Drupal\social_automation\Ui\AutomationUiHandlerInterface
    */
-  protected $rulesUiHandler;
+  protected $automationUiHandler;
 
   /**
    * The date formatter service.
@@ -139,13 +139,13 @@ trait TempStoreTrait {
   }
 
   /**
-   * Gets the currently active RulesUI's handler.
+   * Gets the currently active AutomationUI's handler.
    *
-   * @return \Drupal\rules\Ui\RulesUiHandlerInterface
-   *   The RulesUI handler.
+   * @return \Drupal\social_automation\Ui\AutomationUiHandlerInterface
+   *   The AutomationUI handler.
    */
-  protected function getRulesUiHandler() {
-    // Usually the trait is used on the RulesUI handler.
+  protected function getAutomationUiHandler() {
+    // Usually the trait is used on the AutomationUI handler.
     return $this;
   }
 
@@ -170,14 +170,18 @@ trait TempStoreTrait {
   }
 
   /**
-   * @see \Drupal\rules\Ui\RulesUiHandlerInterface::clearTemporaryStorage()
+   * Clear the temp store.
+   *
+   * @see \Drupal\social_automation\Ui\AutomationUiHandlerInterface::clearTemporaryStorage()
    */
   public function clearTemporaryStorage() {
     $this->getTempStore()->delete($this->getTempStoreItemId());
   }
 
   /**
-   * @see \Drupal\rules\Ui\RulesUiHandlerInterface::isLocked()
+   * Is it locked.
+   *
+   * @see \Drupal\social_automation\Ui\AutomationUiHandlerInterface::isLocked()
    */
   public function isLocked() {
     // If there is an object in the temporary storage from another user then
@@ -197,7 +201,7 @@ trait TempStoreTrait {
    */
   private function getTempStoreItemId() {
     // The internal path is unique for the currently edited component.
-    return $this->getRulesUiHandler()->getBaseRouteUrl()->getInternalPath();
+    return $this->getAutomationUiHandler()->getBaseRouteUrl()->getInternalPath();
   }
 
   /**
@@ -208,20 +212,24 @@ trait TempStoreTrait {
    */
   private function getTempStore() {
     if (!isset($this->tempStore)) {
-      $this->tempStore = $this->getTempStoreFactory()->get($this->getRulesUiHandler()->getPluginId());
+      $this->tempStore = $this->getTempStoreFactory()->get($this->getAutomationUiHandler()->getPluginId());
     }
     return $this->tempStore;
   }
 
   /**
-   * @see \Drupal\rules\Ui\RulesUiHandlerInterface::getLockMetaData()
+   * Get the lock meta data.
+   *
+   * @see \Drupal\social_automation\Ui\AutomationUiHandlerInterface::getLockMetaData()
    */
   public function getLockMetaData() {
     return $this->getTempStore()->getMetadata($this->getTempStoreItemId());
   }
 
   /**
-   * @see \Drupal\rules\Ui\RulesUiHandlerInterface::isEdited()
+   * Is it edited.
+   *
+   * @see \Drupal\social_automation\Ui\AutomationUiHandlerInterface::isEdited()
    */
   public function isEdited() {
     if ($this->getTempStore()->get($this->getTempStoreItemId())) {
@@ -231,7 +239,9 @@ trait TempStoreTrait {
   }
 
   /**
-   * @see \Drupal\rules\Ui\RulesUiHandlerInterface::addLockInformation()
+   * Add lock information.
+   *
+   * @see \Drupal\social_automation\Ui\AutomationUiHandlerInterface::addLockInformation()
    */
   public function addLockInformation() {
     $build = [];
@@ -239,7 +249,7 @@ trait TempStoreTrait {
       $build['locked'] = [
         '#type' => 'container',
         '#attributes' => [
-          'class' => ['rules-locked', 'messages', 'messages--warning'],
+          'class' => ['automation-locked', 'messages', 'messages--warning'],
         ],
         '#children' => $this->lockInformationMessage(),
         '#weight' => -10,
@@ -249,7 +259,7 @@ trait TempStoreTrait {
       $build['changed'] = [
         '#type' => 'container',
         '#attributes' => [
-          'class' => ['rules-changed', 'messages', 'messages--warning'],
+          'class' => ['automation-changed', 'messages', 'messages--warning'],
         ],
         '#children' => $this->t('You have unsaved changes.'),
         '#weight' => -10,
@@ -262,7 +272,9 @@ trait TempStoreTrait {
   }
 
   /**
-   * @see \Drupal\rules\Ui\RulesUiHandlerInterface::validateLock()
+   * Validate lock.
+   *
+   * @see \Drupal\social_automation\Ui\AutomationUiHandlerInterface::validateLock()
    */
   public function validateLock(array &$form, FormStateInterface $form_state) {
     if ($this->isLocked()) {
@@ -285,8 +297,8 @@ trait TempStoreTrait {
     $lock_message_substitutions = [
       '@user' => $this->getRenderer()->render($username),
       '@age' => $this->getDateFormatter()->formatTimeDiffSince($lock->getUpdated()),
-      '@component_type' => $this->getRulesUiHandler()->getPluginDefinition()->component_type_label,
-      ':url' => Url::fromRoute($this->getRulesUiHandler()->getPluginDefinition()->base_route . '.break_lock', \Drupal::routeMatch()->getRawParameters()->all())->toString(),
+      '@component_type' => $this->getAutomationUiHandler()->getPluginDefinition()->component_type_label,
+      ':url' => Url::fromRoute($this->getAutomationUiHandler()->getPluginDefinition()->base_route . '.break_lock', \Drupal::routeMatch()->getRawParameters()->all())->toString(),
     ];
     return $this->t('This @component_type is being edited by user @user, and is therefore locked from editing by others. This lock is @age old. Click here to <a href=":url">break this lock</a>.', $lock_message_substitutions);
   }

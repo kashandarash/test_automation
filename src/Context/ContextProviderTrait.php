@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\rules\Context;
+namespace Drupal\social_automation\Context;
 
 use Drupal\Component\Plugin\Exception\ContextException;
 use Drupal\Core\Plugin\Context\Context;
@@ -14,7 +14,7 @@ use Drupal\Core\Plugin\Context\Context;
  * The trait requires the plugin to use configuration as defined by the
  * ContextConfig class.
  *
- * @see \Drupal\rules\Context\ContextProviderInterface
+ * @see \Drupal\social_automation\Context\ContextProviderInterface
  */
 trait ContextProviderTrait {
 
@@ -26,7 +26,9 @@ trait ContextProviderTrait {
   protected $providedContext;
 
   /**
-   * @see \Drupal\rules\Context\ContextProviderInterface
+   * The context provider.
+   *
+   * @see \Drupal\social_automation\Context\ContextProviderInterface
    */
   public function setProvidedValue($name, $value) {
     $context = $this->getProvidedContext($name);
@@ -36,7 +38,9 @@ trait ContextProviderTrait {
   }
 
   /**
-   * @see \Drupal\rules\Context\ContextProviderInterface
+   * The context provider.
+   *
+   * @see \Drupal\social_automation\Context\ContextProviderInterface
    */
   public function getProvidedContext($name) {
     // Check for a valid context value.
@@ -47,7 +51,9 @@ trait ContextProviderTrait {
   }
 
   /**
-   * @see \Drupal\rules\Context\ContextProviderInterface
+   * The context provider.
+   *
+   * @see \Drupal\social_automation\Context\ContextProviderInterface
    */
   public function getProvidedContextDefinition($name) {
     $definition = $this->getPluginDefinition();
@@ -58,7 +64,9 @@ trait ContextProviderTrait {
   }
 
   /**
-   * @see \Drupal\rules\Context\ContextProviderInterface
+   * The context provider.
+   *
+   * @see \Drupal\social_automation\Context\ContextProviderInterface
    */
   public function getProvidedContextDefinitions() {
     $definition = $this->getPluginDefinition();

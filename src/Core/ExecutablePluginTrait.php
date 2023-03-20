@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\rules\Core;
+namespace Drupal\social_automation\Core;
 
 use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
 

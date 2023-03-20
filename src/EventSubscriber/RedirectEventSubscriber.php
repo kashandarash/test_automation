@@ -1,28 +1,28 @@
 <?php
 
-namespace Drupal\rules\EventSubscriber;
+namespace Drupal\social_automation\EventSubscriber;
 
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
- * Changes the response to a redirect, if a redirect rules action was executed .
+ * Changes the response to a redirect, if a redirect action was executed.
  */
 class RedirectEventSubscriber implements EventSubscriberInterface {
 
   /**
-   * Checks if a redirect rules action was executed.
+   * Checks if a redirect automation action was executed.
    *
    * Redirects to the provided url if there is one.
    *
-   * @param \Symfony\Component\HttpKernel\Event\FilterResponseEvent $event
+   * @param \Symfony\Component\HttpKernel\Event\ResponseEvent $event
    *   The response event.
    */
-  public function checkRedirectIssued(FilterResponseEvent $event) {
+  public function checkRedirectIssued(ResponseEvent $event) {
     $request = $event->getRequest();
-    $redirect_url = $request->attributes->get('_rules_redirect_action_url');
+    $redirect_url = $request->attributes->get('_social_automation_redirect_action_url');
     if (isset($redirect_url)) {
       $event->setResponse(new RedirectResponse($redirect_url));
     }

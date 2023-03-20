@@ -1,14 +1,14 @@
 <?php
 
-namespace Drupal\rules\Context;
+namespace Drupal\social_automation\Context;
 
 use Drupal\Core\Plugin\ContextAwarePluginInterface as CoreContextAwarePluginInterface;
-use Drupal\rules\Exception\LogicException;
+use Drupal\social_automation\Exception\LogicException;
 
 /**
  * Class for value objects helping with context configuration.
  *
- * @see \Drupal\rules\Context\ContextHandlerTrait
+ * @see \Drupal\social_automation\Context\ContextHandlerTrait
  */
 class ContextConfig {
 
@@ -56,7 +56,7 @@ class ContextConfig {
    * @param string $property_path
    *   A valid property path; e.g., "node.uid.target_id".
    *
-   * @throws \Drupal\rules\Exception\LogicException
+   * @throws \Drupal\social_automation\Exception\LogicException
    *   Thrown if a context value and map are set for a given context at the same
    *   time.
    *
@@ -80,7 +80,7 @@ class ContextConfig {
    *   context's data type, unless a data processor takes care of processing it
    *   to a valid value.
    *
-   * @throws \Drupal\rules\Exception\LogicException
+   * @throws \Drupal\social_automation\Exception\LogicException
    *   Thrown if a context value and map are set for a given context at the same
    *   time.
    *
@@ -184,7 +184,7 @@ class ContextConfig {
    * @todo Implement.
    */
   public function checkConfig(CoreContextAwarePluginInterface $plugin) {
-    // @todo.
+    // @todo .
   }
 
 }

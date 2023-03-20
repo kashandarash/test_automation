@@ -1,43 +1,43 @@
 <?php
 
-namespace Drupal\rules\Form;
+namespace Drupal\social_automation\Form;
 
 use Drupal\Core\Form\ConfirmFormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\rules\Ui\RulesUiHandlerInterface;
+use Drupal\social_automation\Ui\AutomationUiHandlerInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Removes an expression from a rule.
+ * Removes an expression from a workflowevent.
  */
 class DeleteExpressionForm extends ConfirmFormBase {
 
   /**
-   * The UUID of the expression in the rule.
+   * The UUID of the expression in the workflowevent.
    *
    * @var string
    */
   protected $uuid;
 
   /**
-   * The RulesUI handler of the currently active UI.
+   * The AutomationUI handler of the currently active UI.
    *
-   * @var \Drupal\rules\Ui\RulesUiHandlerInterface
+   * @var \Drupal\social_automation\Ui\AutomationUiHandlerInterface
    */
-  protected $rulesUiHandler;
+  protected $automationUiHandler;
 
   /**
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'rules_delete_expression';
+    return 'social_automation_delete_expression';
   }
 
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, RulesUiHandlerInterface $rules_ui_handler = NULL, $uuid = NULL) {
-    $this->rulesUiHandler = $rules_ui_handler;
+  public function buildForm(array $form, FormStateInterface $form_state, AutomationUiHandlerInterface $social_automation_ui_handler = NULL, $uuid = NULL) {
+    $this->automationUiHandler = $social_automation_ui_handler;
     $this->uuid = $uuid;
     return parent::buildForm($form, $form_state);
   }
@@ -53,15 +53,15 @@ class DeleteExpressionForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function getQuestion() {
-    $rule_expression = $this->rulesUiHandler->getComponent()->getExpression();
-    $expression_inside = $rule_expression->getExpression($this->uuid);
+    $automation_expression = $this->automationUiHandler->getComponent()->getExpression();
+    $expression_inside = $automation_expression->getExpression($this->uuid);
     if (!$expression_inside) {
       throw new NotFoundHttpException();
     }
 
-    return $this->t('Are you sure you want to delete %title from %rule?', [
+    return $this->t('Are you sure you want to delete %title from %workflowevent?', [
       '%title' => $expression_inside->getLabel(),
-      '%rule' => $this->rulesUiHandler->getComponentLabel(),
+      '%workflowevent' => $this->automationUiHandler->getComponentLabel(),
     ]);
   }
 
@@ -69,16 +69,16 @@ class DeleteExpressionForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function getCancelUrl() {
-    return $this->rulesUiHandler->getBaseRouteUrl();
+    return $this->automationUiHandler->getBaseRouteUrl();
   }
 
   /**
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $component = $this->rulesUiHandler->getComponent();
+    $component = $this->automationUiHandler->getComponent();
     $component->getExpression()->deleteExpression($this->uuid);
-    $this->rulesUiHandler->updateComponent($component);
+    $this->automationUiHandler->updateComponent($component);
     $form_state->setRedirectUrl($this->getCancelUrl());
   }
 

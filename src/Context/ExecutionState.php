@@ -1,19 +1,20 @@
 <?php
 
-namespace Drupal\rules\Context;
+namespace Drupal\social_automation\Context;
 
+use Drupal\Core\Plugin\Context\ContextDefinitionInterface;
 use Drupal\Core\TypedData\Exception\MissingDataException;
 use Drupal\Core\TypedData\TypedDataInterface;
 use Drupal\Core\TypedData\TypedDataTrait;
-use Drupal\rules\Exception\EvaluationException;
-use Drupal\rules\Exception\InvalidArgumentException;
+use Drupal\social_automation\Exception\EvaluationException;
+use Drupal\social_automation\Exception\InvalidArgumentException;
 use Drupal\typed_data\DataFetcherTrait;
 
 /**
- * The rules execution state.
+ * The automation execution state.
  *
- * A rule element may clone the state, so any added variables are only visible
- * for elements in the current PHP-variable-scope.
+ * A workflowevent element may clone the state, so any added variables are only
+ * visible for elements in the current PHP-variable-scope.
  */
 class ExecutionState implements ExecutionStateInterface {
   use DataFetcherTrait;
@@ -21,13 +22,13 @@ class ExecutionState implements ExecutionStateInterface {
   use TypedDataTrait;
 
   /**
-   * Globally keeps the ids of rules blocked due to recursion prevention.
+   * Globally keeps the ids of automation blocked due to recursion prevention.
    *
    * @var array
    *
    * @todo Implement recursion prevention from D7.
    * @todo Move this out of Context namespace?
-   * @see https://www.drupal.org/project/rules/issues/2677094
+   * @see https://www.drupal.org/project/social_automation/issues/2677094
    */
   static protected $blocked = [];
 
@@ -100,9 +101,9 @@ class ExecutionState implements ExecutionStateInterface {
   public function getVariable($name) {
     if (!$this->hasVariable($name)) {
       // @todo This crashes site in certain circumstances - for example if
-      // you're reacting on a "Drupal is initializing" event ... Need to handle
-      // a problem here gracefully - maybe disable the rule that caused the
-      // problem?
+      // you're reacting on a "Drupal is initializing" event ...
+      // Need to handle a problem here gracefully
+      // maybe disable the workflowevent that caused the problem?
       throw new EvaluationException("Unable to get variable '$name'; it is not defined.");
     }
     return $this->variables[$name];
@@ -152,7 +153,7 @@ class ExecutionState implements ExecutionStateInterface {
       // Support global context names as variable name by ignoring points in
       // the service name; e.g. @user.current_user_context:current_user.name.
       if ($property_path[0] == '@') {
-        list($service, $property_path) = explode(':', $property_path, 2);
+        [$service, $property_path] = explode(':', $property_path, 2);
       }
       $parts = explode('.', $property_path);
       $var_name = array_shift($parts);

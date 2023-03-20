@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\rules\Context;
+namespace Drupal\social_automation\Context;
 
 use Drupal\Core\Plugin\ContextAwarePluginInterface as CoreContextAwarePluginInterface;
 
 /**
- * Rules extension of ContextAwarePluginInterface.
+ * Automation extension of ContextAwarePluginInterface.
  */
 interface ContextAwarePluginInterface extends CoreContextAwarePluginInterface {
 

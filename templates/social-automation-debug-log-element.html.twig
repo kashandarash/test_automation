@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a Automation debug output log entry.
+ *
+ * This outputs the container for Automation log debug output.
+ * Individual log entries are output in social-automation-debug-log-element.html.twig.
+ *
+ * Available variables:
+ * - text: The text of the debug log message, with placeholders replaced.
+ * - level: Drupal text log level of this entry.
+ * - time: The time of this entry, in milliseconds, relative to the start of
+ *   the Workflow event execution.
+ * - link: A link tag pointing to the edit page for the expression that
+ *   generated this log entry.
+ *
+ * @see template_preprocess_social_automation_debug_log_element()
+ *
+ * @ingroup themeable
+#}
+{% set classes = ['social-automation-debug-log'] %}
+<span class="social-automation-debug-{{ level }}">{%if time %}{{ time }} {% endif %}{{ text }}{% if link %}&nbsp;[{{
+  link }}]{% endif %}</span>

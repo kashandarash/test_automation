@@ -1,0 +1,17 @@
+automation_component:
+  type: mapping
+  label: 'Automation component (embedded)'
+  mapping:
+    context_definitions:
+      type: sequence
+      label: 'Context definitions'
+      sequence:
+        - type: social_automation.context.definition
+    provided_context_definitions:
+      type: sequence
+      label: 'Provided context definitions'
+      sequence:
+        - type: social_automation.context.definition
+    expression:
+      type: social_automation_expression.[id]
+      label: 'Expression configuration'

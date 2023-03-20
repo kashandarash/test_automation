@@ -1,34 +1,34 @@
 <?php
 
-namespace Drupal\rules\Form;
+namespace Drupal\social_automation\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\rules\Ui\RulesUiHandlerInterface;
-use Drupal\rules\Engine\RulesComponent;
+use Drupal\social_automation\Ui\AutomationUiHandlerInterface;
+use Drupal\social_automation\Engine\AutomationComponent;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * UI form to edit an expression like a condition or action in a rule.
+ * UI form to edit an expression like a condition or action in a workflowevent.
  */
 class EditExpressionForm extends FormBase {
 
   /**
    * The edited component.
    *
-   * @var \Drupal\rules\Engine\RulesComponent
+   * @var \Drupal\social_automation\Engine\AutomationComponent
    */
   protected $component;
 
   /**
-   * The RulesUI handler of the currently active UI.
+   * The AutomationUI handler of the currently active UI.
    *
-   * @var \Drupal\rules\Ui\RulesUiHandlerInterface
+   * @var \Drupal\social_automation\Ui\AutomationUiHandlerInterface
    */
-  protected $rulesUiHandler;
+  protected $automationUiHandler;
 
   /**
-   * The UUID of the edited expression in the rule.
+   * The UUID of the edited expression in the workflowevent.
    *
    * @var string
    */
@@ -37,27 +37,27 @@ class EditExpressionForm extends FormBase {
   /**
    * Gets the currently edited expression from the given component.
    *
-   * @param \Drupal\rules\Engine\RulesComponent $component
+   * @param \Drupal\social_automation\Engine\AutomationComponent $component
    *   The component from which to get the expression.
    *
-   * @return \Drupal\rules\Engine\ExpressionInterface|null
+   * @return \Drupal\social_automation\Engine\ExpressionInterface|null
    *   The expression object.
    */
-  protected function getEditedExpression(RulesComponent $component) {
-    $rule_expression = $component->getExpression();
-    return $rule_expression->getExpression($this->uuid);
+  protected function getEditedExpression(AutomationComponent $component) {
+    $automation_expression = $component->getExpression();
+    return $automation_expression->getExpression($this->uuid);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, RulesUiHandlerInterface $rules_ui_handler = NULL, $uuid = NULL) {
-    $this->rulesUiHandler = $rules_ui_handler;
-    $this->component = is_object($form_state->get('component')) ? $form_state->get('component') : $this->rulesUiHandler->getComponent();
+  public function buildForm(array $form, FormStateInterface $form_state, AutomationUiHandlerInterface $social_automation_ui_handler = NULL, $uuid = NULL) {
+    $this->automationUiHandler = $social_automation_ui_handler;
+    $this->component = is_object($form_state->get('component')) ? $form_state->get('component') : $this->automationUiHandler->getComponent();
     $this->uuid = $form_state->get('uuid') ?: $uuid;
 
     // During form rebuilds, keep track of changes using form state.
-    $form_state->set('rules_ui_handler', $this->rulesUiHandler);
+    $form_state->set('social_automation_ui_handler', $this->automationUiHandler);
     $form_state->set('component', $this->component);
     $form_state->set('uuid', $this->uuid);
 
@@ -75,7 +75,7 @@ class EditExpressionForm extends FormBase {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'rules_expression_edit';
+    return 'automation_expression_edit';
   }
 
   /**
@@ -86,7 +86,7 @@ class EditExpressionForm extends FormBase {
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The current state of the form.
    *
-   * @return \Drupal\rules\Engine\RulesComponent
+   * @return \Drupal\social_automation\Engine\AutomationComponent
    *   The updated component.
    */
   protected function buildComponent(array $form, FormStateInterface $form_state) {
@@ -107,14 +107,13 @@ class EditExpressionForm extends FormBase {
   public function validateForm(array &$form, FormStateInterface $form_state) {
     // Ensure the object properties are initialized, see
     // https://www.drupal.org/node/2669032.
-    $this->rulesUiHandler = $form_state->get('rules_ui_handler');
-    $this->component = is_object($form_state->get('component')) ? $form_state->get('component') : $this->rulesUiHandler->getComponent();
+    $this->automationUiHandler = $form_state->get('social_automation_ui_handler');
+    $this->component = is_object($form_state->get('component')) ? $form_state->get('component') : $this->automationUiHandler->getComponent();
     $this->uuid = $form_state->get('uuid');
 
-    $this->rulesUiHandler->validateLock($form, $form_state);
+    $this->automationUiHandler->validateLock($form, $form_state);
 
     // @todo This ignores ExpressionFormInterface::validateForm().
-
     $component = $this->buildComponent($form, $form_state);
     $violations = $component->checkIntegrity();
 
@@ -129,16 +128,16 @@ class EditExpressionForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->component = $this->buildComponent($form, $form_state);
-    $this->rulesUiHandler->updateComponent($this->component);
-    $form_state->setRedirectUrl($this->rulesUiHandler->getBaseRouteUrl());
+    $this->automationUiHandler->updateComponent($this->component);
+    $form_state->setRedirectUrl($this->automationUiHandler->getBaseRouteUrl());
   }
 
   /**
    * Provides the page title on the form.
    */
-  public function getTitle(RulesUiHandlerInterface $rules_ui_handler, $uuid) {
+  public function getTitle(AutomationUiHandlerInterface $social_automation_ui_handler, $uuid) {
     $this->uuid = $uuid;
-    $expression = $this->getEditedExpression($rules_ui_handler->getComponent());
+    $expression = $this->getEditedExpression($social_automation_ui_handler->getComponent());
     return $this->t('Edit @expression', ['@expression' => $expression->getLabel()]);
   }
 

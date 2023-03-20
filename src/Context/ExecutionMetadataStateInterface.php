@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\rules\Context;
+namespace Drupal\social_automation\Context;
 
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\TypedData\DataDefinitionInterface;
@@ -9,10 +9,10 @@ use Drupal\Core\TypedData\DataDefinitionInterface;
  * The state used during configuration time holding data definitions.
  *
  * This is mostly used for integrity checks to validate the configuration of a
- * rule. The metadata state is passed down the expression tree where data
- * definitions can be modified or added. Nested expression in the tree then get
- * the updated metadata state and can make use of the updated variable data
- * definitions.
+ * workflowevent. The metadata state is passed down the expression tree where
+ * data definitions can be modified or added. Nested expression in the tree
+ * then get the updated metadata state and can make use of the updated variable
+ * data definitions.
  */
 interface ExecutionMetadataStateInterface {
 
@@ -81,7 +81,7 @@ interface ExecutionMetadataStateInterface {
    * @return \Drupal\Core\TypedData\DataDefinitionInterface
    *   A data definition if the property path could be applied.
    *
-   * @throws \Drupal\rules\Exception\IntegrityException
+   * @throws \Drupal\social_automation\Exception\IntegrityException
    *   Thrown if the property path is invalid.
    */
   public function fetchDefinitionByPropertyPath($property_path, $langcode = LanguageInterface::LANGCODE_NOT_SPECIFIED);

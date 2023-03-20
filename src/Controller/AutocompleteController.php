@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\rules\Controller;
+namespace Drupal\social_automation\Controller;
 
-use Drupal\rules\Ui\RulesUiHandlerInterface;
+use Drupal\social_automation\Ui\AutomationUiHandlerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -14,7 +14,7 @@ class AutocompleteController {
   /**
    * Returns a JSON list of autocomplete suggestions for data selectors.
    *
-   * @param \Drupal\rules\Ui\RulesUiHandlerInterface $rules_ui_handler
+   * @param \Drupal\social_automation\Ui\AutomationUiHandlerInterface $social_automation_ui_handler
    *   The UI handler.
    * @param \Symfony\Component\HttpFoundation\Request $request
    *   The request object providing the autocomplete query parameter.
@@ -26,8 +26,8 @@ class AutocompleteController {
    * @return \Symfony\Component\HttpFoundation\JsonResponse
    *   The JSON results.
    */
-  public function autocomplete(RulesUiHandlerInterface $rules_ui_handler, Request $request, $uuid = NULL) {
-    $component = $rules_ui_handler->getComponent();
+  public function autocomplete(AutomationUiHandlerInterface $social_automation_ui_handler, Request $request, $uuid = NULL) {
+    $component = $social_automation_ui_handler->getComponent();
     $nested_expression = $component->getExpression()->getExpression($uuid);
     if ($nested_expression === FALSE) {
       // @todo We don't have a UUID when an expression is added. Just show all

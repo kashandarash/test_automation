@@ -1,10 +1,10 @@
 <?php
 
-namespace Drupal\rules\Context;
+namespace Drupal\social_automation\Context;
 
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\TypedData\DataDefinitionInterface;
-use Drupal\rules\Exception\IntegrityException;
+use Drupal\social_automation\Exception\IntegrityException;
 use Drupal\typed_data\DataFetcherTrait;
 use Drupal\typed_data\Exception\TypedDataException;
 
@@ -18,9 +18,9 @@ class ExecutionMetadataState implements ExecutionMetadataStateInterface {
   /**
    * The known data definitions.
    *
-   * @var \Drupal\Core\TypedData\DataDefinitionInterface
+   * @var \Drupal\Core\TypedData\DataDefinitionInterface[]
    */
-  protected $dataDefinitions = [];
+  protected array $dataDefinitions = [];
 
   /**
    * {@inheritdoc}
@@ -90,7 +90,7 @@ class ExecutionMetadataState implements ExecutionMetadataStateInterface {
       // Support global context names as variable name by ignoring points in
       // the service name; e.g. @user.current_user_context:current_user.name.
       if (isset($property_path[0]) && $property_path[0] == '@') {
-        list($service, $property_path) = explode(':', $property_path, 2);
+        [$service, $property_path] = explode(':', $property_path, 2);
       }
       $parts = explode('.', $property_path);
       $var_name = array_shift($parts);

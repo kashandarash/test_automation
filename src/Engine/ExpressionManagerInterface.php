@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\rules\Engine;
+namespace Drupal\social_automation\Engine;
 
 use Drupal\Component\Plugin\PluginManagerInterface;
-use Drupal\rules\Context\ContextConfig;
+use Drupal\social_automation\Context\ContextConfig;
 
 /**
  * Defines an interface for the expression plugin manager.
@@ -13,29 +13,29 @@ interface ExpressionManagerInterface extends PluginManagerInterface {
   /**
    * {@inheritdoc}
    *
-   * @return \Drupal\rules\Engine\ExpressionInterface
+   * @return \Drupal\social_automation\Engine\ExpressionInterface
    *   A fully configured plugin instance.
    */
   public function createInstance($plugin_id, array $configuration = []);
 
   /**
-   * Creates a new rule.
+   * Creates a new workflowevent.
    *
-   * @param \Drupal\rules\Context\ContextConfig $configuration
+   * @param \Drupal\social_automation\Context\ContextConfig $configuration
    *   (optional) The context configuration used to create the plugin instance.
    *
-   * @return \Drupal\rules\Engine\RuleExpressionInterface
-   *   The created rule.
+   * @return \Drupal\social_automation\Engine\AutomationExpressionInterface
+   *   The created workflowevent.
    */
-  public function createRule(ContextConfig $configuration = NULL);
+  public function createWorkflowEvent(ContextConfig $configuration = NULL);
 
   /**
    * Creates a new action set.
    *
-   * @param \Drupal\rules\Context\ContextConfig $configuration
+   * @param \Drupal\social_automation\Context\ContextConfig $configuration
    *   (optional) The context configuration used to create the plugin instance.
    *
-   * @return \Drupal\rules\Plugin\RulesExpression\ActionSetExpression
+   * @return \Drupal\social_automation\Plugin\AutomationExpression\ActionSetExpression
    *   The created action set.
    */
   public function createActionSet(ContextConfig $configuration = NULL);
@@ -45,10 +45,10 @@ interface ExpressionManagerInterface extends PluginManagerInterface {
    *
    * @param string $id
    *   The action plugin id.
-   * @param \Drupal\rules\Context\ContextConfig $configuration
+   * @param \Drupal\social_automation\Context\ContextConfig $configuration
    *   (optional) The context configuration used to create the plugin instance.
    *
-   * @return \Drupal\rules\Engine\ActionExpressionInterface
+   * @return \Drupal\social_automation\Engine\ActionExpressionInterface
    *   The created action expression.
    */
   public function createAction($id, ContextConfig $configuration = NULL);
@@ -58,10 +58,10 @@ interface ExpressionManagerInterface extends PluginManagerInterface {
    *
    * @param string $id
    *   The condition plugin id.
-   * @param \Drupal\rules\Context\ContextConfig $configuration
+   * @param \Drupal\social_automation\Context\ContextConfig $configuration
    *   (optional) The context configuration used to create the plugin instance.
    *
-   * @return \Drupal\rules\Engine\ConditionExpressionInterface
+   * @return \Drupal\social_automation\Engine\ConditionExpressionInterface
    *   The created condition expression.
    */
   public function createCondition($id, ContextConfig $configuration = NULL);
@@ -69,7 +69,7 @@ interface ExpressionManagerInterface extends PluginManagerInterface {
   /**
    * Creates a new 'and' condition container.
    *
-   * @return \Drupal\rules\Engine\ConditionExpressionContainerInterface
+   * @return \Drupal\social_automation\Engine\ConditionExpressionContainerInterface
    *   The created 'and' condition container.
    */
   public function createAnd();
@@ -77,7 +77,7 @@ interface ExpressionManagerInterface extends PluginManagerInterface {
   /**
    * Creates a new 'or' condition container.
    *
-   * @return \Drupal\rules\Engine\ConditionExpressionContainerInterface
+   * @return \Drupal\social_automation\Engine\ConditionExpressionContainerInterface
    *   The created 'or' condition container.
    */
   public function createOr();

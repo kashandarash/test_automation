@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\rules\Context\Form;
+namespace Drupal\social_automation\Context\Form;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\rules\Context\ContextConfig;
-use Drupal\rules\Context\ContextDefinitionInterface;
-use Drupal\rules\Context\DataProcessorManagerTrait;
+use Drupal\social_automation\Context\ContextConfig;
+use Drupal\social_automation\Context\ContextDefinitionInterface;
+use Drupal\social_automation\Context\DataProcessorManagerTrait;
 
 /**
  * Provides form logic for handling contexts when configuring an expression.
@@ -63,14 +63,14 @@ trait ContextFormTrait {
     $element = &$form['context_definitions'][$context_name]['setting'];
 
     if ($mode == ContextDefinitionInterface::ASSIGNMENT_RESTRICTION_SELECTOR) {
-      $element['#description'] = $this->t("The data selector helps you drill down into the available data. <em>To make entity fields appear in the data selector, you may have to use the condition 'Entity is of bundle'.</em> More useful tips about data selection are available in <a href=':url'>the online documentation</a>.", [
+      $element['#description'] = $this->t("The data selector helps you drill down into the available data. <em>To make entity fields appear in the data selector, you may have to use the condition 'entity has field' (or 'content is of type').</em> More useful tips about data selection is available in <a href=':url'>the online documentation</a>.", [
         ':url' => 'https://www.drupal.org/node/1300042',
       ]);
 
-      $url = $this->getRulesUiHandler()->getUrlFromRoute('autocomplete', []);
-      $element['#attributes']['class'][] = 'rules-autocomplete';
+      $url = $this->getAutomationUiHandler()->getUrlFromRoute('autocomplete', []);
+      $element['#attributes']['class'][] = 'automation-autocomplete';
       $element['#attributes']['data-autocomplete-path'] = $url->toString();
-      $element['#attached']['library'][] = 'rules/rules.autocomplete';
+      $element['#attached']['library'][] = 'social_automation/social_automation.autocomplete';
     }
     elseif ($context_definition->isMultiple()) {
       $element['#type'] = 'textarea';
@@ -90,7 +90,7 @@ trait ContextFormTrait {
       $form['context_definitions'][$context_name]['switch_button'] = [
         '#type' => 'submit',
         '#name' => 'context_' . $context_name,
-        '#attributes' => ['class' => ['rules-switch-button']],
+        '#attributes' => ['class' => ['automation-switch-button']],
         '#parameter' => $context_name,
         '#value' => $value,
         '#submit' => [static::class . '::switchContextMode'],
@@ -137,7 +137,7 @@ trait ContextFormTrait {
    * @param \Drupal\Core\Plugin\Context\ContextDefinitionInterface[] $context_definitions
    *   The context definitions of the plugin.
    *
-   * @return \Drupal\rules\Context\ContextConfig
+   * @return \Drupal\social_automation\Context\ContextConfig
    *   The context config object populated with context mappings/values.
    */
   protected function getContextConfigFromFormValues(FormStateInterface $form_state, array $context_definitions) {
@@ -163,8 +163,8 @@ trait ContextFormTrait {
           }
           // For now, always add in the token context processor if it's present.
           // @todo Improve this in https://www.drupal.org/node/2804035.
-          if ($this->getDataProcessorManager()->getDefinition('rules_tokens')) {
-            $context_config->process($context_name, 'rules_tokens');
+          if ($this->getDataProcessorManager()->getDefinition('social_automation_tokens')) {
+            $context_config->process($context_name, 'social_automation_tokens');
           }
         }
       }

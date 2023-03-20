@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\rules\Engine;
+namespace Drupal\social_automation\Engine;
 
 use Drupal\Core\StringTranslation\TranslatableMarkup;
-use Drupal\rules\Exception\OutOfBoundsException;
+use Drupal\social_automation\Exception\OutOfBoundsException;
 
 /**
  * Collection of integrity violations.
@@ -32,10 +32,10 @@ class IntegrityViolationList extends \ArrayIterator {
    * @param int $offset
    *   The offset of the violation.
    *
-   * @return \Drupal\rules\Engine\IntegrityViolationInterface
+   * @return \Drupal\social_automation\Engine\IntegrityViolationInterface
    *   The violation.
    *
-   * @throws \Drupal\rules\Exception\OutOfBoundsException
+   * @throws \Drupal\social_automation\Exception\OutOfBoundsException
    *   Thrown if the offset does not exist.
    */
   public function get($offset) {

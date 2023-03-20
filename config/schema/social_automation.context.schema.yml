@@ -1,0 +1,30 @@
+social_automation.context.definition:
+  type: mapping
+  label: 'Context definition'
+  mapping:
+    type:
+      type: string
+      label: 'Type'
+    label:
+      type: text
+      label: 'Label'
+    description:
+      type: text
+      label: 'Description'
+
+social_automation.context.mapping:
+  type: sequence
+  label: 'Context mapping'
+  sequence:
+    - type: string
+
+social_automation.context.values:
+  type: mapping
+  label: 'Context values'
+  mapping:
+  # The entries depend on the plugin here. Plugins have to extend this and
+  # provide a suitable schema.
+
+social_automation.context.processors:
+  type: ignore
+  label: 'Context processors'

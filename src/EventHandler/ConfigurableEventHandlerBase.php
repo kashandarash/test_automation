@@ -1,15 +1,15 @@
 <?php
 
-namespace Drupal\rules\EventHandler;
+namespace Drupal\social_automation\EventHandler;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\rules\Core\RulesConfigurableEventHandlerInterface;
-use Drupal\rules\Core\RulesDefaultEventHandler;
+use Drupal\social_automation\Core\AutomationConfigurableEventHandlerInterface;
+use Drupal\social_automation\Core\AutomationDefaultEventHandler;
 
 /**
  * Base class for event handler.
  */
-abstract class ConfigurableEventHandlerBase extends RulesDefaultEventHandler implements RulesConfigurableEventHandlerInterface {
+abstract class ConfigurableEventHandlerBase extends AutomationDefaultEventHandler implements AutomationConfigurableEventHandlerInterface {
 
   /**
    * The event configuration.

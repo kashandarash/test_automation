@@ -1,0 +1,17 @@
+social_automation.reactions:
+  title: 'Workflow events'
+  route_name: entity.social_automation_workflow_event.collection
+  base_route: entity.social_automation_workflow_event.collection
+  weight: 10
+
+social_automation.components:
+  title: 'Components'
+  route_name: entity.automation_component.collection
+  base_route: entity.social_automation_workflow_event.collection
+  weight: 20
+
+social_automation.settings:
+  title: 'Settings'
+  route_name: social_automation.settings
+  base_route: entity.social_automation_workflow_event.collection
+  weight: 30

@@ -1,12 +1,12 @@
 <?php
 
-namespace Drupal\rules\Engine;
+namespace Drupal\social_automation\Engine;
 
 use Drupal\Core\Plugin\PluginBase;
-use Drupal\rules\Context\ExecutionState;
+use Drupal\social_automation\Context\ExecutionState;
 
 /**
- * Base class for rules expressions.
+ * Base class for automation expressions.
  */
 abstract class ExpressionBase extends PluginBase implements ExpressionInterface {
 
@@ -20,7 +20,7 @@ abstract class ExpressionBase extends PluginBase implements ExpressionInterface 
   /**
    * The root expression if this object is nested.
    *
-   * @var \Drupal\rules\Engine\ExpressionInterface
+   * @var \Drupal\social_automation\Engine\ExpressionInterface
    */
   protected $root;
 
@@ -61,7 +61,7 @@ abstract class ExpressionBase extends PluginBase implements ExpressionInterface 
   }
 
   /**
-   * Executes a rules expression.
+   * Executes a automation expression.
    */
   public function execute() {
     // If there is no state given, we have to assume no required context.

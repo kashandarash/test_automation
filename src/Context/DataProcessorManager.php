@@ -1,24 +1,24 @@
 <?php
 
-namespace Drupal\rules\Context;
+namespace Drupal\social_automation\Context;
 
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
-use Drupal\rules\Annotation\RulesDataProcessor;
+use Drupal\social_automation\Annotation\AutomationDataProcessor;
 
 /**
- * Plugin manager for Rules data processors.
+ * Plugin manager for Automation data processors.
  *
- * @see \Drupal\rules\Context\DataProcessorInterface
+ * @see \Drupal\social_automation\Context\DataProcessorInterface
  */
 class DataProcessorManager extends DefaultPluginManager {
 
   /**
    * {@inheritdoc}
    */
-  public function __construct(\Traversable $namespaces, ModuleHandlerInterface $module_handler, $plugin_definition_annotation_name = RulesDataProcessor::class) {
-    $this->alterInfo('rules_data_processor');
-    parent::__construct('Plugin/RulesDataProcessor', $namespaces, $module_handler, DataProcessorInterface::class, $plugin_definition_annotation_name);
+  public function __construct(\Traversable $namespaces, ModuleHandlerInterface $module_handler, $plugin_definition_annotation_name = AutomationDataProcessor::class) {
+    $this->alterInfo('social_automation_data_processor');
+    parent::__construct('Plugin/AutomationDataProcessor', $namespaces, $module_handler, DataProcessorInterface::class, $plugin_definition_annotation_name);
   }
 
 }

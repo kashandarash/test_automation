@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\rules\Plugin\DataType;
+namespace Drupal\social_automation\Plugin\DataType;
 
 use Drupal\Core\TypedData\Plugin\DataType\Map;
-use Drupal\rules\TypedData\Type\SiteInterface;
+use Drupal\social_automation\TypedData\Type\SiteInterface;
 
 /**
  * The "site" data type.
@@ -22,7 +22,7 @@ use Drupal\rules\TypedData\Type\SiteInterface;
  *   id = "site",
  *   label = @Translation("Site information"),
  *   description = @Translation("Site information"),
- *   definition_class = "\Drupal\rules\TypedData\Type\SiteDataDefinition"
+ *   definition_class = "\Drupal\social_automation\TypedData\Type\SiteDataDefinition"
  * )
  */
 class Site extends Map implements SiteInterface {
@@ -56,7 +56,7 @@ class Site extends Map implements SiteInterface {
 
     // Update any existing property objects.
     foreach ($this->properties as $name => $property) {
-      $value = isset($values[$name]) ? $values[$name] : NULL;
+      $value = $values[$name] ?? NULL;
       $property->setValue($value, FALSE);
       // Remove the value from $this->values to ensure it does not contain any
       // value for computed properties.

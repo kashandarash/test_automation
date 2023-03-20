@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\rules\Context;
+namespace Drupal\social_automation\Context;
 
 /**
  * Interface for plugins that provide context.
